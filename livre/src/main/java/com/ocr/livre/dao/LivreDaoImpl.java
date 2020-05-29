@@ -29,7 +29,7 @@ public class LivreDaoImpl implements LivreDao {
 
     @Override
     public List<Livre> findAll(Sort sort) {
-        return null;
+        return livres;
     }
 
     @Override

@@ -36,18 +36,12 @@ public class LivreController {
     }
     //Récuperer un livre par son id
     @GetMapping( value = "/Livre/{id}")
-    public Livre recupererUnLivre(@PathVariable int id) {
+    public Optional<Livre> recupererUnLivre(@PathVariable int id) {
 
-        Optional<Livre> l;
-        l = LivreDao.findById(id);
+          Optional<Livre> livre = LivreDao.findById(id);
 
-        Livre livre = null ;
+          if(!recupererUnLivre(id).isPresent())  throw new LivreNotFoundException("Le livre correspondant à l'id " + id + " n'existe pas");
 
-        if(l.isPresent()){
-
-            livre = l.get();
+          return livre;
         }
-
-        return livre;
-    }
 }
