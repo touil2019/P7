@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="clientui" />
         <module name="livre" />
+        <module name="config-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
