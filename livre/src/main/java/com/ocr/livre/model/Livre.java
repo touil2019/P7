@@ -27,8 +27,8 @@ public class Livre {
     public Livre() {
     }
 
-    public Livre(int id, String auteurName, String auteurPrenom, String titre, String edition, String image) {
-        this.id = id;
+    public Livre( String auteurName, String auteurPrenom, String titre, String edition, String image) {
+
         this.auteurName = auteurName;
         this.auteurPrenom = auteurPrenom;
         this.titre = titre;

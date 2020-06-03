@@ -12,5 +12,5 @@ public interface LivreDao extends JpaRepository<Livre, Integer> {
 
    public Livre findById(int id);
 
-   public Livre save (Livre livre);
+
 }

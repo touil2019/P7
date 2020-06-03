@@ -38,7 +38,7 @@ public class LivreController {
     }
     //Récuperer un livre par son id
 
-    @GetMapping(value = "Livres/{id}")
+    @GetMapping(value = "Livre/{id}")
     public Livre recupererUnLivre(@PathVariable int id) {
 
         Livre livre = livreDao.findById(id);
@@ -49,11 +49,6 @@ public class LivreController {
         return livre;
     }
 
-    //Enregistrer un nouveau livre
 
-    @PostMapping(value = "/Livres")
-    public void ajouterLivre(@RequestBody Livre livre){
-        livreDao.save(livre);
-    }
 }
 
