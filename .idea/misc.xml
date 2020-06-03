@@ -5,7 +5,6 @@
       <list>
         <option value="$PROJECT_DIR$/livre/pom.xml" />
         <option value="$PROJECT_DIR$/clientui/pom.xml" />
-        <option value="$PROJECT_DIR$/config-server/pom.xml" />
       </list>
     </option>
   </component>
