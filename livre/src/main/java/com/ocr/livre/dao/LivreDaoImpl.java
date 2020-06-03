@@ -1,13 +1,10 @@
 package com.ocr.livre.dao;
 
 import com.ocr.livre.model.Livre;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class LivreDaoImpl implements LivreDao {
@@ -25,15 +22,25 @@ public class LivreDaoImpl implements LivreDao {
         livres.add(new Livre( 9, "STEINBECK","John","Les Raisins De La Colere","GALLIMARD","image 3" ));
     }
 
-
-
     @Override
-    public List<Livre> findAll(Sort sort) {
+    public List<Livre> findAll() {
         return livres;
     }
 
     @Override
-    public Optional<Livre> findById(Integer integer) {
-        return Optional.empty();
+    public Livre findById(int id) {
+        for (Livre livre: livres) {
+
+            if (livre.getId()== id){
+                return livre;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Livre save(Livre livre) {
+        livres.add(livre);
+        return livre;
     }
 }

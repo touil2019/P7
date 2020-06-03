@@ -21,6 +21,7 @@ public class Livre {
     private String edition ;
 
     private String image;
+    private boolean Present;
 
 
     public Livre() {
@@ -96,6 +97,11 @@ public class Livre {
                 ", edition='" + edition + '\'' +
                 ", image='" + image + '\'' +
                 '}';
+    }
+
+
+    public boolean isPresent() {
+        return Present;
     }
 }
 

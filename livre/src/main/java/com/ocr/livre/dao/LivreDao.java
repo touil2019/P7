@@ -8,11 +8,9 @@ import java.util.List;
 
 public interface LivreDao extends JpaRepository<Livre, Integer> {
 
-        public static List<Livre> findAll();
+   public List<Livre> findAll();
 
-        public LivrefindByid(int id) {
+   public Livre findById(int id);
 
-        }
-
-        void LivrefindByid(int id);
+   public Livre save (Livre livre);
 }
