@@ -8,7 +8,7 @@
         livres.add(new Livre( 7, "STEINBECK","John","Les Raisins De La Colere","GALLIMARD","image 3" ));
         livres.add(new Livre( 8, "STEINBECK","John","Les Raisins De La Colere","GALLIMARD","image 3" ));
         livres.add(new Livre( 9, "STEINBECK","John","Les Raisins De La Colere","GALLIMARD","image 3" ));
-        MIAUOU
+        MIAU
    */
 
 
