@@ -4,12 +4,11 @@ package com.ocr.livre.web.controller;
 import com.ocr.livre.dao.LivreDao;
 import com.ocr.livre.model.Livre;
 import com.ocr.livre.web.exceptions.LivreNotFoundException;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.logging.Logger;
+
 
 @RestController
 public class LivreController {
@@ -18,7 +17,7 @@ public class LivreController {
     private LivreDao livreDao;
 
 
-    Logger log = (Logger) LoggerFactory.getLogger(this.getClass());
+
 
 
     // Affiche la liste de tous les livres disponibles
@@ -31,7 +30,7 @@ public class LivreController {
         if (livres.isEmpty()) throw new LivreNotFoundException("Aucun livre n'est disponible à l'emprunt");
 
 
-        log.info("Récupération de la liste des livres");
+
 
         return livres;
 

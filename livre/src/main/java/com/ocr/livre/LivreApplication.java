@@ -20,7 +20,7 @@ private LivreDao livreDao;
 
 	@PostConstruct
 	public void postConstruct(){
-		Livre livre1 = new Livre("WRIGHT","Richard","Black Boy","GALLIMARD","image 1" );
+		Livre livre1 = new Livre("WRIGHT","Richard","Black Boy","GALLIMARD","https://m.media-amazon.com/images/I/51JtLYQSchL.jpg" );
 		livreDao.save(livre1);
 	}
 }

@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface LivreDao extends JpaRepository<Livre, Integer> {
+public interface LivreDao extends JpaRepository<Livre, Long> {
 
    public List<Livre> findAll();
 
