@@ -16,13 +16,9 @@ public class LivreController {
     @Autowired
     private LivreDao livreDao;
 
-
-
-
-
     // Affiche la liste de tous les livres disponibles
 
-    @GetMapping(value = "Livres")
+    @GetMapping(value = "/Livres")
     public List<Livre> Listelivres() {
 
         List<Livre> livres = livreDao.findAll();
@@ -37,10 +33,10 @@ public class LivreController {
     }
     //Récuperer un livre par son id
 
-    @GetMapping(value = "Livre/{id}")
-    public Livre recupererUnLivre(@PathVariable int id) {
+    @GetMapping(value = "/Livre/{id}")
+    public Livre recupererUnLivre(@PathVariable long id) {
 
-        Livre livre = livreDao.findById(id);
+        Livre livre = livreDao.findById(id).get();
 
         if (!recupererUnLivre(id).isPresent())
             throw new LivreNotFoundException("Le livre correspondant à l'id " + id + " n'existe pas");
