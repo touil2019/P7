@@ -12,11 +12,6 @@ public class CustomErrorDecoder implements ErrorDecoder {
     @Override
     public Exception decode(String invoqueur, Response reponse) {
 
-        if(reponse.status() == 400 ) {
-            return new UtilisateurNotFoundException(
-                    "Utilisateur non trouvé"
-            );
-        }
 
         return defaultErrorDecoder.decode(invoqueur, reponse);
     }

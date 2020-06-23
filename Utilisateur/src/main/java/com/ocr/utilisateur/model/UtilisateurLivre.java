@@ -8,11 +8,11 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-public class UtiLivre {
+public class UtilisateurLivre {
     @Id
     @GeneratedValue
     private Long id;
@@ -31,24 +31,22 @@ public class UtiLivre {
 
     @Enumerated(EnumType.STRING)
     @ElementCollection(fetch = FetchType.EAGER)
-    private List<UtiRole> userRoleList;
+    private Set<UtiRole> userRoleList;
 
-    public UtiLivre() {
+    public UtilisateurLivre() {
     }
 
-    public UtiLivre(Long id,
-                    @Size(max=50)
+    public UtilisateurLivre(@Size(max=50)
                     @NotBlank
                     @NotEmpty( message = "Merci de saisir un pseudo" )String username,
-                    @Size(max=100)
+                            @Size(max=100)
                     @NotBlank
                     @Email( message = "Merci de saisir une adresse mail valide." )
                     @NotEmpty( message = "Merci de saisir une adresse email" )String email,
-                    @Size(max=100)
+                            @Size(max=100)
                     @NotBlank
                             String password){
 
-        this.id = id;
         this.username = username;
         this.email = email;
         this.password = BCryptEncoderConfig.passwordencoder().encode(password);
@@ -65,6 +63,14 @@ public class UtiLivre {
 
     public String getUsername() {
         return username;
+    }
+
+    public Set<UtiRole> getUserRoleList() {
+        return userRoleList;
+    }
+
+    public void setUserRoleList(Set<UtiRole> userRoleList) {
+        this.userRoleList = userRoleList;
     }
 
     public void setUsername(String username) {
@@ -88,12 +94,12 @@ public class UtiLivre {
     }
 
     public void grantAuthority(UtiRole authority) {
-        if ( userRoleList == null ) userRoleList = new ArrayList<>();
+        if ( userRoleList == null ) userRoleList = new HashSet<>();
         userRoleList.add(authority);
     }
     @Override
     public String toString(){
-        return "UtiLivre{"+
+        return "UtilisateurLivre{"+
                 "id=" + id +
                 ", username=" + username +
                 ", email=" + email +

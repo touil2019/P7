@@ -2,7 +2,7 @@ package com.ocr.utilisateur.web.controller;
 
 
 import com.ocr.utilisateur.dao.UtilisateurDao;
-import com.ocr.utilisateur.model.UtiLivre;
+import com.ocr.utilisateur.model.UtilisateurLivre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,20 +17,24 @@ public class UtilisateurController {
     private UtilisateurDao utilisateurDao;
 
     @GetMapping("/all-account")
-    public List<UtiLivre> utilLivreList (){
-        List<UtiLivre> utilLivres = utilisateurDao.findAll();
+    public List<UtilisateurLivre> utilLivreList (){
+        List<UtilisateurLivre> utilLivres = utilisateurDao.findAll();
 
         return utilLivres;
     }
 
     @GetMapping("/{username}/login")
-    public Optional<UtiLivre> login (@PathVariable String username){
-        Optional<UtiLivre> userBook = utilisateurDao.findByUsername(username);
-        return userBook;
+    public UtilisateurLivre login (@PathVariable String username){
+        Optional<UtilisateurLivre> u = utilisateurDao.findByUsername(username);
+        UtilisateurLivre utilisateurLivre=null;
+        if (u.isPresent()) {
+            utilisateurLivre = u.get();
+        }
+        return utilisateurLivre;
     }
 
     @PostMapping(value = "/registerPost")
-    public UtiLivre register(@RequestBody UtiLivre utilLivre) {
+    public UtilisateurLivre register(@RequestBody UtilisateurLivre utilLivre) {
         utilisateurDao.save(utilLivre);
         return utilLivre;
     }
