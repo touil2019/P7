@@ -1,4 +1,4 @@
-package com.ocr.livre.model;
+package com.ocr.utilisateur.model;
 
 
 import javax.persistence.Entity;

@@ -1,13 +1,13 @@
-package com.ocr.livre.web.exceptions;
+package com.ocr.utilisateur.web.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class LivreNotFoundException extends RuntimeException {
+public class UtilisateurNotFoundException extends RuntimeException {
 
 
-    public LivreNotFoundException(String message) {
+    public UtilisateurNotFoundException(String message) {
         super(message);
     }
 }

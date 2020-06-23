@@ -1,7 +1,7 @@
-package com.ocr.livre;
+package com.ocr.utilisateur;
 
-import com.ocr.livre.dao.LivreDao;
-import com.ocr.livre.model.Livre;
+import com.ocr.utilisateur.dao.LivreDao;
+import com.ocr.utilisateur.model.Livre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

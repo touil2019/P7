@@ -1,9 +1,9 @@
-package com.ocr.livre.web.controller;
+package com.ocr.utilisateur.web.controller;
 
 
-import com.ocr.livre.dao.LivreDao;
-import com.ocr.livre.model.Livre;
-import com.ocr.livre.web.exceptions.LivreNotFoundException;
+import com.ocr.utilisateur.dao.LivreDao;
+import com.ocr.utilisateur.model.Livre;
+import com.ocr.utilisateur.web.exceptions.LivreNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,9 +24,6 @@ public class LivreController {
         List<Livre> livres = livreDao.findAll();
 
         if (livres.isEmpty()) throw new LivreNotFoundException("Aucun livre n'est disponible à l'emprunt");
-
-
-
 
         return livres;
 

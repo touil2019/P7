@@ -1,7 +1,7 @@
-package com.ocr.livre.dao;
+package com.ocr.utilisateur.dao;
 
 
-import com.ocr.livre.model.Livre;
+import com.ocr.utilisateur.model.Livre;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
