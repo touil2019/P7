@@ -1,10 +1,8 @@
 package com.ocr.utilisateur.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Livre {
@@ -23,6 +21,11 @@ public class Livre {
 
     private String image;
     private boolean Present;
+
+
+    @OneToMany
+    (mappedBy = "EmpruntLivre", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Collection<EmpruntLivre> empruntLivres;
 
 
     public Livre() {
@@ -72,6 +75,14 @@ public class Livre {
 
     public void setTitre(String titre) {
         this.titre = titre;
+    }
+
+    public Collection<EmpruntLivre> getEmpruntLivres() {
+        return empruntLivres;
+    }
+
+    public void setEmpruntLivres(Collection<EmpruntLivre> empruntLivres) {
+        this.empruntLivres = empruntLivres;
     }
 
     public String getEdition() {

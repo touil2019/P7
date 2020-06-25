@@ -1,6 +1,8 @@
 package com.ocr.utilisateur;
 
+import com.ocr.utilisateur.dao.EmpruntLivreDao;
 import com.ocr.utilisateur.dao.LivreDao;
+import com.ocr.utilisateur.model.EmpruntLivre;
 import com.ocr.utilisateur.model.Livre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -9,6 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 import javax.annotation.PostConstruct;
+import java.util.Date;
 
 @EnableFeignClients("com.ocr.livre")
 @SpringBootApplication
@@ -17,6 +20,8 @@ public class LivreApplication {
 
 @Autowired
 private LivreDao livreDao;
+@Autowired
+private EmpruntLivreDao empruntLivreDao;
 
 	public static void main(String[] args) {
 		SpringApplication.run(LivreApplication.class, args);
@@ -43,6 +48,17 @@ private LivreDao livreDao;
 		Livre livre9 = new Livre("LEE","Harper","Ne Tirez Pas Sur L'Oiseau Moqueur","LE LIVRE DE POCHE","https://m.media-amazon.com/images/I/41mY4e0kS9L.jpg");
 		livreDao.save(livre9);
 
-
+		EmpruntLivre empruntLivre1= new EmpruntLivre(new Date(),new Date(),1L,livre1);
+		empruntLivreDao.save(empruntLivre1);
+		EmpruntLivre empruntLivre2= new EmpruntLivre(new Date(),new Date(),1L,livre4);
+		empruntLivreDao.save(empruntLivre2);
+		EmpruntLivre empruntLivre3= new EmpruntLivre(new Date(),new Date(),1L,livre7);
+		empruntLivreDao.save(empruntLivre3);
+		EmpruntLivre empruntLivre4= new EmpruntLivre(new Date(),new Date(),2L,livre2);
+		empruntLivreDao.save(empruntLivre4);
+		EmpruntLivre empruntLivre5= new EmpruntLivre(new Date(),new Date(),2L,livre5);
+		empruntLivreDao.save(empruntLivre5);
+		EmpruntLivre empruntLivre6= new EmpruntLivre(new Date(),new Date(),2L,livre8);
+		empruntLivreDao.save(empruntLivre6);
 	}
 }
