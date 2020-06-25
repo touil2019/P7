@@ -4,10 +4,11 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "empruntlivre")
-public class EmpruntLivre {
+@Table(name = "emprunt")
+public class Emprunt {
+
    @Id
-   @GeneratedValue
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date dateemprunt;
     private Date dateretour;
@@ -15,20 +16,21 @@ public class EmpruntLivre {
     private Long id_utilisateur;
     private boolean cloturee;
 
-   /** @ManyToOne
-    @JoinColumn(name = "Livre")
-    private Livre livre;*/
 
-    public EmpruntLivre() {
+    @ManyToOne
+    @JoinColumn(name = "ID_LIVRE")
+    private Livre livre;
+
+    public Emprunt() {
         super();
 
     }
 
-    public EmpruntLivre(Date dateemprunt,Date dateretour,Long id_utilisateur,Livre livre) {
+    public Emprunt(Date dateemprunt, Date dateretour, Long id_utilisateur, Livre livre) {
         this.dateemprunt = dateemprunt;
         this.dateretour = dateretour;
-       this.id_utilisateur=id_utilisateur;
-
+        this.id_utilisateur=id_utilisateur;
+        this.livre =livre;
     }
 
     public Long getId() {
@@ -76,5 +78,11 @@ public class EmpruntLivre {
         this.cloturee = cloturee;
     }
 
+   public Livre getLivre() {
+        return livre;
+    }
 
+    public void setLivre(Livre livre) {
+        this.livre = livre;
+    }
 }

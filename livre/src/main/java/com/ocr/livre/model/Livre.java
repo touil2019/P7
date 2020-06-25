@@ -1,15 +1,20 @@
 package com.ocr.livre.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 import java.util.Set;
 
 @Entity
+@Table(name = "livre")
 public class Livre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_livre")
     private long id;
 
     private String auteurName;
@@ -24,9 +29,8 @@ public class Livre {
     private boolean Present;
 
 
-   /* @OneToMany
-    (mappedBy = "empruntlivre", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<EmpruntLivre> empruntLivres;*/
+   @OneToMany(mappedBy="livre", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Emprunt> emprunts;
 
 
     public Livre() {
@@ -95,7 +99,13 @@ public class Livre {
         this.image = image;
     }
 
+    public Set<Emprunt> getEmprunts() {
+        return emprunts;
+    }
 
+    public void setEmprunts(Set<Emprunt> emprunts) {
+        this.emprunts = emprunts;
+    }
 
     @Override
     public String toString() {

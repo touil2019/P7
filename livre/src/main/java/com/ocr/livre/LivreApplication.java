@@ -2,7 +2,7 @@ package com.ocr.livre;
 
 import com.ocr.livre.dao.LivreDao;
 import com.ocr.livre.dao.EmpruntLivreDao;
-import com.ocr.livre.model.EmpruntLivre;
+import com.ocr.livre.model.Emprunt;
 import com.ocr.livre.model.Livre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -48,17 +48,17 @@ private EmpruntLivreDao empruntLivreDao;
 		Livre livre9 = new Livre("LEE","Harper","Ne Tirez Pas Sur L'Oiseau Moqueur","LE LIVRE DE POCHE","https://m.media-amazon.com/images/I/41mY4e0kS9L.jpg");
 		livreDao.save(livre9);
 
-		EmpruntLivre empruntLivre1= new EmpruntLivre(new Date(),new Date(),1L,livre1);
-		empruntLivreDao.save(empruntLivre1);
-		EmpruntLivre empruntLivre2= new EmpruntLivre(new Date(),new Date(),1L,livre4);
-		empruntLivreDao.save(empruntLivre2);
-		EmpruntLivre empruntLivre3= new EmpruntLivre(new Date(),new Date(),1L,livre7);
-		empruntLivreDao.save(empruntLivre3);
-		EmpruntLivre empruntLivre4= new EmpruntLivre(new Date(),new Date(),2L,livre2);
-		empruntLivreDao.save(empruntLivre4);
-		EmpruntLivre empruntLivre5= new EmpruntLivre(new Date(),new Date(),2L,livre5);
-		empruntLivreDao.save(empruntLivre5);
-		EmpruntLivre empruntLivre6= new EmpruntLivre(new Date(),new Date(),2L,livre8);
-		empruntLivreDao.save(empruntLivre6);
+		Emprunt emprunt1 = new Emprunt(new Date(),new Date(),1L,livre1);
+		empruntLivreDao.save(emprunt1);
+		Emprunt emprunt2 = new Emprunt(new Date(),new Date(),1L,livre4);
+		empruntLivreDao.save(emprunt2);
+		Emprunt emprunt3 = new Emprunt(new Date(),new Date(),1L,livre7);
+		empruntLivreDao.save(emprunt3);
+		Emprunt emprunt4 = new Emprunt(new Date(),new Date(),2L,livre2);
+		empruntLivreDao.save(emprunt4);
+		Emprunt emprunt5 = new Emprunt(new Date(),new Date(),2L,livre5);
+		empruntLivreDao.save(emprunt5);
+		Emprunt emprunt6 = new Emprunt(new Date(),new Date(),2L,livre8);
+		empruntLivreDao.save(emprunt6);
 	}
 }
