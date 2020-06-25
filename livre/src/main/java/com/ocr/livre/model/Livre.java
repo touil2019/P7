@@ -1,8 +1,9 @@
-package com.ocr.utilisateur.model;
+package com.ocr.livre.model;
 
 
 import javax.persistence.*;
-import java.util.Collection;
+
+import java.util.Set;
 
 @Entity
 public class Livre {
@@ -23,9 +24,9 @@ public class Livre {
     private boolean Present;
 
 
-    @OneToMany
-    (mappedBy = "EmpruntLivre", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Collection<EmpruntLivre> empruntLivres;
+   /* @OneToMany
+    (mappedBy = "empruntlivre", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<EmpruntLivre> empruntLivres;*/
 
 
     public Livre() {
@@ -77,13 +78,6 @@ public class Livre {
         this.titre = titre;
     }
 
-    public Collection<EmpruntLivre> getEmpruntLivres() {
-        return empruntLivres;
-    }
-
-    public void setEmpruntLivres(Collection<EmpruntLivre> empruntLivres) {
-        this.empruntLivres = empruntLivres;
-    }
 
     public String getEdition() {
         return edition;

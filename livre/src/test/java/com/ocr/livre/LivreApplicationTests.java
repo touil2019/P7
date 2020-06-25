@@ -1,4 +1,4 @@
-package com.ocr.utilisateur;
+package com.ocr.livre;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

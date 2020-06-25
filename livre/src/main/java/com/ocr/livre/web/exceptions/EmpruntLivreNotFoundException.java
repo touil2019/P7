@@ -1,4 +1,4 @@
-package com.ocr.utilisateur.web.exceptions;
+package com.ocr.livre.web.exceptions;
 
 public class EmpruntLivreNotFoundException {
 }

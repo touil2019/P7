@@ -1,6 +1,5 @@
-package com.ocr.utilisateur.configuration;
+package com.ocr.livre.configuration;
 
-import com.ocr.utilisateur.web.exceptions.LivreNotFoundException;
 import feign.Response;
 import feign.codec.ErrorDecoder;
 

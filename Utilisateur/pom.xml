@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ocr.utilisateur</groupId>
-	<artifactId>livre</artifactId>
+	<artifactId>utilisateur</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Utilisateur</name>
 	<description>module de gestion des Utilisateurs</description>

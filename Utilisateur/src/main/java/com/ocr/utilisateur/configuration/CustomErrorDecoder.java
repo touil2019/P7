@@ -1,6 +1,5 @@
 package com.ocr.utilisateur.configuration;
 
-import com.ocr.utilisateur.web.exceptions.UtilisateurNotFoundException;
 import feign.Response;
 import feign.codec.ErrorDecoder;
 

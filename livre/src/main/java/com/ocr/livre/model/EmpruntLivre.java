@@ -1,9 +1,10 @@
-package com.ocr.utilisateur.model;
+package com.ocr.livre.model;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "empruntlivre")
 public class EmpruntLivre {
    @Id
    @GeneratedValue
@@ -14,9 +15,9 @@ public class EmpruntLivre {
     private Long id_utilisateur;
     private boolean cloturee;
 
-    @ManyToOne
+   /** @ManyToOne
     @JoinColumn(name = "Livre")
-    private Livre livre;
+    private Livre livre;*/
 
     public EmpruntLivre() {
         super();
@@ -27,7 +28,7 @@ public class EmpruntLivre {
         this.dateemprunt = dateemprunt;
         this.dateretour = dateretour;
        this.id_utilisateur=id_utilisateur;
-       this.livre= livre;
+
     }
 
     public Long getId() {
@@ -75,11 +76,5 @@ public class EmpruntLivre {
         this.cloturee = cloturee;
     }
 
-    public Livre getLivre() {
-        return livre;
-    }
 
-    public void setLivre(Livre livre) {
-        this.livre = livre;
-    }
 }

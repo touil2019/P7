@@ -1,4 +1,4 @@
-package com.ocr.utilisateur.configuration;
+package com.ocr.livre.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
