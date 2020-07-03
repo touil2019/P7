@@ -1,14 +1,23 @@
 package com.ocr.livre.batch;
 
+import com.ocr.livre.LivreApplication;
+import com.ocr.livre.service.EmailService;
+import org.apache.logging.log4j.LogManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+
+import java.util.logging.Logger;
+
 public class BatchJob {
-   /** private static final Logger logger = LogManager.getLogger(BibliothequeApplication.class);
+    private static final Logger logger = (Logger) LogManager.getLogger(LivreApplication.class);
 
     @Autowired
-    EmailService emailService ;
+    EmailService emailService;
 
     @Scheduled(cron = "0 0 14 * * *")
     public void lendingRevival() throws Exception {
-        logger.debug("Execution du batch");
+        logger.info("Execution du batch");
 
-        emailService.envoyerEmailRelance();*/
+        emailService.envoyerEmailRelance();
+    }
 }

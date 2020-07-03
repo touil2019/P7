@@ -48,17 +48,17 @@ private EmpruntLivreDao empruntLivreDao;
 		Livre livre9 = new Livre("LEE","Harper","Ne Tirez Pas Sur L'Oiseau Moqueur","LE LIVRE DE POCHE","https://m.media-amazon.com/images/I/41mY4e0kS9L.jpg",1);
 		livreDao.save(livre9);
 
-		Emprunt emprunt1 = new Emprunt(new Date(),new Date(),1L,livre1);
+		Emprunt emprunt1 = new Emprunt(new Date(),new Date(),1L,"USER",livre1);
 		empruntLivreDao.save(emprunt1);
-		Emprunt emprunt2 = new Emprunt(new Date(),new Date(),1L,livre4);
+		Emprunt emprunt2 = new Emprunt(new Date(),new Date(),1L,"USER",livre4);
 		empruntLivreDao.save(emprunt2);
-		Emprunt emprunt3 = new Emprunt(new Date(),new Date(),1L,livre7);
+		Emprunt emprunt3 = new Emprunt(new Date(),new Date(),1L,"USER",livre7);
 		empruntLivreDao.save(emprunt3);
-		Emprunt emprunt4 = new Emprunt(new Date(),new Date(),2L,livre2);
+		Emprunt emprunt4 = new Emprunt(new Date(),new Date(),2L,"ADMIN",livre2);
 		empruntLivreDao.save(emprunt4);
-		Emprunt emprunt5 = new Emprunt(new Date(),new Date(),2L,livre5);
+		Emprunt emprunt5 = new Emprunt(new Date(),new Date(),2L,"ADMIN",livre5);
 		empruntLivreDao.save(emprunt5);
-		Emprunt emprunt6 = new Emprunt(new Date(),new Date(),2L,livre8);
+		Emprunt emprunt6 = new Emprunt(new Date(),new Date(),2L,"ADMIN",livre8);
 		empruntLivreDao.save(emprunt6);
 	}
 }

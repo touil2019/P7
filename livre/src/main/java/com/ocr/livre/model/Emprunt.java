@@ -14,6 +14,7 @@ public class Emprunt {
     private Date dateretour;
     private boolean prolongee;
     private Long id_utilisateur;
+    private String nom_Utilisateur;
     private boolean cloturee;
 
 
@@ -26,22 +27,26 @@ public class Emprunt {
 
     }
 
-    public Emprunt(Date dateemprunt, Date dateretour, Long id_utilisateur, Livre livre) {
+    public Emprunt(Date dateemprunt, Date dateretour, Long id_utilisateur,String nom_Utilisateur, Livre livre) {
         this.dateemprunt = dateemprunt;
         this.dateretour = dateretour;
         this.id_utilisateur=id_utilisateur;
+        this.nom_Utilisateur=nom_Utilisateur;
         this.livre =livre;
     }
 
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public Date getDateemprunt() {
         return dateemprunt;
     }
+
     public void setDateemprunt(Date dateemprunt) {
         this.dateemprunt = dateemprunt;
     }
@@ -78,7 +83,7 @@ public class Emprunt {
         this.cloturee = cloturee;
     }
 
-   public Livre getLivre() {
+    public Livre getLivre() {
         return livre;
     }
 
