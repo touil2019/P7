@@ -26,23 +26,29 @@ public class Livre {
     private String edition ;
 
     private String image;
+
+    private int quantiteDispo ;
+
+
     private boolean Present;
 
 
    @OneToMany(mappedBy="livre", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<Emprunt> emprunts;
+   private Set<Emprunt> emprunt;
 
 
     public Livre() {
     }
 
-    public Livre( String auteurName, String auteurPrenom, String titre, String edition, String image) {
+    public Livre(String auteurName, String auteurPrenom, String titre, String edition, String image, int quantiteDispo) {
 
         this.auteurName = auteurName;
         this.auteurPrenom = auteurPrenom;
         this.titre = titre;
         this.edition = edition;
+        this.quantiteDispo = quantiteDispo;
         this.image = image;
+        this.emprunt = emprunt;
 
     }
 
@@ -99,12 +105,20 @@ public class Livre {
         this.image = image;
     }
 
-    public Set<Emprunt> getEmprunts() {
-        return emprunts;
+    public Set<Emprunt> getEmprunt() {
+        return emprunt;
     }
 
-    public void setEmprunts(Set<Emprunt> emprunts) {
-        this.emprunts = emprunts;
+    public void setEmprunt(Set<Emprunt> emprunt) {
+        this.emprunt = emprunt;
+    }
+
+    public int getQuantiteDispo() {
+        return quantiteDispo;
+    }
+
+    public void setQuantiteDispo(int quantiteDispo) {
+        this.quantiteDispo = quantiteDispo;
     }
 
     @Override
@@ -116,6 +130,8 @@ public class Livre {
                 ", titre='" + titre + '\'' +
                 ", edition='" + edition + '\'' +
                 ", image='" + image + '\'' +
+                ", quantiteDispo='" + quantiteDispo + '\''+
+                ", emprunt='" + emprunt + '\''+
                 '}';
     }
 
