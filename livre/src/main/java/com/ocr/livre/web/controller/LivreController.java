@@ -3,7 +3,7 @@ package com.ocr.livre.web.controller;
 
 import com.ocr.livre.dao.LivreDao;
 import com.ocr.livre.model.Livre;
-import com.ocr.livre.web.exceptions.LivreNotFoundException;
+import com.ocr.livre.service.LivreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,31 +16,40 @@ public class LivreController {
     @Autowired
     private LivreDao livreDao;
 
-    // Affiche la liste de tous les livres disponibles
 
-    @GetMapping(value = "/Livres")
-    public List<Livre> Listelivres() {
+    @Autowired
+    LivreService livreService ;
 
-        List<Livre> livres = livreDao.findAll();
 
-        if (livres.isEmpty()) throw new LivreNotFoundException("Aucun livre n'est disponible à l'emprunt");
 
-        return livres;
-
-    }
-    //Récuperer un livre par son id
-
-    @GetMapping(value = "/Livre/{id}")
-    public Livre recupererUnLivre(@PathVariable long id) {
-
-        Livre livre = livreDao.findById(id).get();
-
-        if (!recupererUnLivre(id).isPresent())
-            throw new LivreNotFoundException("Le livre correspondant à l'id " + id + " n'existe pas");
-
-        return livre;
+    @GetMapping(value = "/liste")
+    public List<Livre> listeLivre(){
+        return livreService.findAll();
     }
 
+
+    @GetMapping(value = "/listeRecherche")
+    public List<Livre> listeLivreRecherche(@RequestParam(name = "mc")String mc){
+        return livreService.findByTitreContainingIgnoreCase(mc);
+    }
+
+
+    @GetMapping(value = "/livre/{idLivre}")
+    public Livre findById(@PathVariable("idLivre")Long idLidvre){
+        return livreService.findLivreById(idLidvre);
+    }
+
+
+    @PostMapping(value ="/livre/enregistrer")
+    public Livre enregistrerNouveauLivre(@RequestBody Livre livre){
+         return livreService.enregistrerNouveauLivre(livre);
+    }
+
+
+    @GetMapping(value = "/livre/supprimer")
+    public void supprimerLivre(Long idLivre){
+       livreService.supprimerLivre(idLivre);
+    }
 
 }
 

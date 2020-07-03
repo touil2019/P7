@@ -1,5 +1,6 @@
 package com.ocr.livre;
 
+import com.ocr.livre.dao.EmailDao;
 import com.ocr.livre.dao.LivreDao;
 import com.ocr.livre.dao.EmpruntLivreDao;
 import com.ocr.livre.model.Emprunt;
@@ -22,6 +23,8 @@ public class LivreApplication {
 private LivreDao livreDao;
 @Autowired
 private EmpruntLivreDao empruntLivreDao;
+@Autowired
+private EmailDao emailDao;
 
 	public static void main(String[] args) {
 		SpringApplication.run(LivreApplication.class, args);
@@ -48,17 +51,17 @@ private EmpruntLivreDao empruntLivreDao;
 		Livre livre9 = new Livre("LEE","Harper","Ne Tirez Pas Sur L'Oiseau Moqueur","LE LIVRE DE POCHE","https://m.media-amazon.com/images/I/41mY4e0kS9L.jpg",1);
 		livreDao.save(livre9);
 
-		Emprunt emprunt1 = new Emprunt(new Date(),new Date(),1L,"USER",livre1);
+		Emprunt emprunt1 = new Emprunt( "USER", new Date(), new Date(),true,true, "Black Boy");
 		empruntLivreDao.save(emprunt1);
-		Emprunt emprunt2 = new Emprunt(new Date(),new Date(),1L,"USER",livre4);
+		Emprunt emprunt2 = new Emprunt("USER",new Date(),new Date(),true,true,"Les Raisins De La Colere");
 		empruntLivreDao.save(emprunt2);
-		Emprunt emprunt3 = new Emprunt(new Date(),new Date(),1L,"USER",livre7);
+		Emprunt emprunt3 = new Emprunt("USER",new Date(),new Date(),true,true,"Ne Tirez Pas Sur L'Oiseau Moqueur");
 		empruntLivreDao.save(emprunt3);
-		Emprunt emprunt4 = new Emprunt(new Date(),new Date(),2L,"ADMIN",livre2);
+		Emprunt emprunt4 = new Emprunt("ADMIN",new Date(),new Date(),true,true,"Black Boy");
 		empruntLivreDao.save(emprunt4);
-		Emprunt emprunt5 = new Emprunt(new Date(),new Date(),2L,"ADMIN",livre5);
+		Emprunt emprunt5 = new Emprunt("ADMIN",new Date(),new Date(),true,true,"Les Raisins De La Colere");
 		empruntLivreDao.save(emprunt5);
-		Emprunt emprunt6 = new Emprunt(new Date(),new Date(),2L,"ADMIN",livre8);
+		Emprunt emprunt6 = new Emprunt("ADMIN",new Date(),new Date(),true,true,"Ne Tirez Pas Sur L'Oiseau Moqueur");
 		empruntLivreDao.save(emprunt6);
 	}
 }

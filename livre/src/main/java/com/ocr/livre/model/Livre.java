@@ -1,6 +1,8 @@
 package com.ocr.livre.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -29,8 +31,9 @@ public class Livre {
     private boolean Present;
 
 
-   @OneToMany(mappedBy="livre", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-   private Set<Emprunt> emprunt;
+    @JsonIgnore
+    @OneToMany(mappedBy = "livre", fetch = FetchType.LAZY)
+    private Set<Emprunt> emprunt;
 
 
     public Livre() {

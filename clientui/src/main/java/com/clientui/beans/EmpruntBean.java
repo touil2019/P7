@@ -1,90 +1,102 @@
 package com.clientui.beans;
 
-import com.ocr.livre.model.Livre;
-
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.util.Date;
 
+
 public class EmpruntBean {
-    private Long id;
-    private Date dateemprunt;
-    private Date dateretour;
-    private boolean prolongee;
-    private Long id_utilisateur;
-    private String nom_Utilisateur;
-    private boolean cloturee;
+
+    private Long idEmprunt;
+
+    private String pseudoEmprunteur ;
+
+    private Date dateDebut;
+
+    private Date dateFin;
+
+    private boolean prolongeable;
+
+    private boolean enCours ;
+
+    private LivreBean livre ;
 
 
-    private Livre livre;
-
-    public EmpruntBean() {
-        super();
-
+    public EmpruntBean(Long idEmprunt, String pseudoEmprunteur, Date dateDebut, Date dateFin, boolean prolongeable, boolean enCours, LivreBean livre) {
+        this.idEmprunt = idEmprunt;
+        this.pseudoEmprunteur = pseudoEmprunteur;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.prolongeable = prolongeable;
+        this.enCours = enCours;
+        this.livre = livre;
     }
 
-    public EmpruntBean(Date dateemprunt, Date dateretour, Long id_utilisateur,String nom_Utilisateur, Livre livre) {
-        this.dateemprunt = dateemprunt;
-        this.dateretour = dateretour;
-        this.id_utilisateur=id_utilisateur;
-        this.nom_Utilisateur=nom_Utilisateur;
-        this.livre =livre;
+    public Long getIdEmprunt() {
+        return idEmprunt;
     }
 
-    public Long getId() {
-        return id;
+    public void setIdEmprunt(Long idEmprunt) {
+        this.idEmprunt = idEmprunt;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getPseudoEmprunteur() {
+        return pseudoEmprunteur;
     }
 
-    public Date getDateemprunt() {
-        return dateemprunt;
+    public void setPseudoEmprunteur(String pseudoEmprunteur) {
+        this.pseudoEmprunteur = pseudoEmprunteur;
     }
 
-    public void setDateemprunt(Date dateemprunt) {
-        this.dateemprunt = dateemprunt;
+    public Date getDateDebut() {
+        return dateDebut;
     }
 
-    public Date getDateretour() {
-        return dateretour;
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
     }
 
-    public void setDateretour(Date dateretour) {
-        this.dateretour = dateretour;
+    public Date getDateFin() {
+        return dateFin;
     }
 
-    public boolean isProlongee() {
-        return prolongee;
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
     }
 
-    public void setProlongee(boolean prolongee) {
-        this.prolongee = prolongee;
+    public boolean isProlongeable() {
+        return prolongeable;
     }
 
-    public Long getId_utilisateur() {
-        return id_utilisateur;
+    public void setProlongeable(boolean prolongeable) {
+        this.prolongeable = prolongeable;
     }
 
-    public void setId_utilisateur(Long id_utilisateur) {
-        this.id_utilisateur = id_utilisateur;
+    public boolean isEnCours() {
+        return enCours;
     }
 
-    public boolean isCloturee() {
-        return cloturee;
+    public void setEnCours(boolean enCours) {
+        this.enCours = enCours;
     }
 
-    public void setCloturee(boolean cloturee) {
-        this.cloturee = cloturee;
-    }
-
-    public Livre getLivre() {
+    public LivreBean getLivre() {
         return livre;
     }
 
-    public void setLivre(Livre livre) {
+    public void setLivre(LivreBean livre) {
         this.livre = livre;
+    }
+
+    @Override
+    public String toString() {
+        return "EmpruntBean{" +
+                "idEmprunt=" + idEmprunt +
+                ", pseudoEmprunteur='" + pseudoEmprunteur + '\'' +
+                ", dateDebut=" + dateDebut +
+                ", dateFin=" + dateFin +
+                ", prolongeable=" + prolongeable +
+                ", enCours=" + enCours +
+                ", livre=" + livre +
+                '}';
     }
 }
 

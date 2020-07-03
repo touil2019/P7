@@ -1,86 +1,103 @@
 package com.ocr.livre.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
+
 @Entity
-@Table(name = "emprunt")
-public class Emprunt {
+public class Emprunt implements Serializable {
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Date dateemprunt;
-    private Date dateretour;
-    private boolean prolongee;
-    private Long id_utilisateur;
-    private String nom_Utilisateur;
-    private boolean cloturee;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long idEmprunt;
 
 
-    @ManyToOne
-    @JoinColumn(name = "ID_LIVRE")
+    private String pseudoEmprunteur;
+
+
+    private Date dateDebut;
+
+
+    private Date dateFin;
+
+
+    private boolean prolongeable;
+
+    public boolean isEnCours;
+
+    private boolean enCours;
+
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_livre")
     private Livre livre;
 
-    public Emprunt() {
+
+    public Emprunt(String user, Date date, Date date1, boolean b, boolean b1, String livre1) {
         super();
-
     }
 
-    public Emprunt(Date dateemprunt, Date dateretour, Long id_utilisateur,String nom_Utilisateur, Livre livre) {
-        this.dateemprunt = dateemprunt;
-        this.dateretour = dateretour;
-        this.id_utilisateur=id_utilisateur;
-        this.nom_Utilisateur=nom_Utilisateur;
-        this.livre =livre;
+    public Emprunt(Long idEmprunt, String pseudoEmprunteur, Date dateDebut, Date dateFin, boolean prolongeable, boolean enCours, Livre livre) {
+        this.idEmprunt = idEmprunt;
+        this.pseudoEmprunteur = pseudoEmprunteur;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.prolongeable = prolongeable;
+        this.enCours = enCours;
+        this.livre = livre;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdEmprunt() {
+        return idEmprunt;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdEmprunt(Long idEmprunt) {
+        this.idEmprunt = idEmprunt;
     }
 
-    public Date getDateemprunt() {
-        return dateemprunt;
+    public String getPseudoEmprunteur() {
+        return pseudoEmprunteur;
     }
 
-    public void setDateemprunt(Date dateemprunt) {
-        this.dateemprunt = dateemprunt;
+    public void setPseudoEmprunteur(String pseudoEmprunteur) {
+        this.pseudoEmprunteur = pseudoEmprunteur;
     }
 
-    public Date getDateretour() {
-        return dateretour;
+    public Date getDateDebut() {
+        return dateDebut;
     }
 
-    public void setDateretour(Date dateretour) {
-        this.dateretour = dateretour;
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
     }
 
-    public boolean isProlongee() {
-        return prolongee;
+    public Date getDateFin() {
+        return dateFin;
     }
 
-    public void setProlongee(boolean prolongee) {
-        this.prolongee = prolongee;
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
     }
 
-    public Long getId_utilisateur() {
-        return id_utilisateur;
+    public boolean isProlongeable() {
+        return prolongeable;
     }
 
-    public void setId_utilisateur(Long id_utilisateur) {
-        this.id_utilisateur = id_utilisateur;
+    public void setProlongeable(boolean prolongeable) {
+        this.prolongeable = prolongeable;
     }
 
-    public boolean isCloturee() {
-        return cloturee;
+    public boolean isEnCours() {
+        return isEnCours;
     }
 
-    public void setCloturee(boolean cloturee) {
-        this.cloturee = cloturee;
+    public boolean isEnCours(boolean b) {
+        return enCours;
+    }
+
+    public void setEnCours(boolean enCours) {
+        this.enCours = enCours;
     }
 
     public Livre getLivre() {
@@ -89,5 +106,19 @@ public class Emprunt {
 
     public void setLivre(Livre livre) {
         this.livre = livre;
+    }
+
+    @Override
+    public String toString() {
+        return "Emprunt{" +
+                "idEmprunt=" + idEmprunt +
+                ", pseudoEmprunteur='" + pseudoEmprunteur + '\'' +
+                ", dateDebut=" + dateDebut +
+                ", dateFin=" + dateFin +
+                ", prolongeable=" + prolongeable +
+                ", enCours=" + enCours +
+                ", livre=" + livre +
+                '}';
+
     }
 }

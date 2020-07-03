@@ -13,7 +13,7 @@ public class Email {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idMail ;
 
-    private String nom_Utilisateur;
+    private String nom;
 
     private String objet ;
 
@@ -22,9 +22,9 @@ public class Email {
     public Email() {
     }
 
-    public Email(Long idMail, String nom_Utilisateur, String objet, String contenu) {
+    public Email(Long idMail, String nom, String objet, String contenu) {
         this.idMail = idMail;
-        this.nom_Utilisateur = nom_Utilisateur;
+        this.nom = nom;
         this.objet = objet;
         this.contenu = contenu;
     }
@@ -37,6 +37,13 @@ public class Email {
         this.idMail = idMail;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
     public String getObjet() {
         return objet;
@@ -58,7 +65,7 @@ public class Email {
     public String toString() {
         return "email{" +
                 "idMail=" + idMail +
-                ", nom_Utilisateur='" + nom_Utilisateur + '\'' +
+                ", nom='" + nom + '\'' +
                 ", objet='" + objet + '\'' +
                 ", contenu='" + contenu + '\'' +
                 '}';

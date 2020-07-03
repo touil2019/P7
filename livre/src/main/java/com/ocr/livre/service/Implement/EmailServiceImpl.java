@@ -9,6 +9,7 @@ import com.ocr.livre.proxies.MicroserviceUtilisateurProxy;
 import com.ocr.livre.service.EmailService;
 import com.ocr.livre.service.EmpruntService;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -19,7 +20,7 @@ import javax.mail.internet.MimeMessage;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Logger;
+
 
 @Service
 public class EmailServiceImpl implements EmailService {
@@ -29,7 +30,7 @@ public class EmailServiceImpl implements EmailService {
     @Autowired
     private JavaMailSenderImpl sender;
 
-    @Autowired
+
     private EmpruntService empruntService ;
 
     @Autowired
@@ -61,22 +62,20 @@ public class EmailServiceImpl implements EmailService {
 
         for (Emprunt e: listeEmpruntNonRendue) {
 
-
-
-            Date datefin = e.getDateretour();
+            Date dateFin = e.getDateFin();
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            String strDate = sdf.format(datefin);
+            String strDate = sdf.format(dateFin);
 
-            UtilisateurBean utilisateur = microserviceUtilisateurProxy.login(e.getId_utilisateur();
+            UtilisateurBean utilisateur = microserviceUtilisateurProxy.login(e.getPseudoEmprunteur());
 
-            logger.info("Appel EmailServiceImpl méthode envoyerEmailRelance à l'adresse : " + utilisateur.getEmail() + " pour le livre : " +e.getLivre().getTitre() + " pour l'emprunt id : " + e.getId_utilisateur());
+            logger.info("Appel EmailServiceImpl méthode envoyerEmailRelance à l'adresse : " + utilisateur.getEmail() + " pour le livre : " +e.getLivre().getTitre() + " pour l'emprunt id : " + e.getIdEmprunt());
 
             String text = email.getContenu()
-                    .replace("[NOMUTILISATEUR]", e.getId_utilisateur()
+                    .replace("[NOMUTILISATEUR]", e.getPseudoEmprunteur())
                     .replace("[TITRELIVRE]", e.getLivre().getTitre())
                     .replace("[DATEFIN]", strDate);
 
-            sendSimpleMessage(utilisateur.getEmail(), email.getObjet(), text);
+            sendSimpleMessage(utilisateur.getEmail(), email.getObjet(),text);
         }
     }
 }

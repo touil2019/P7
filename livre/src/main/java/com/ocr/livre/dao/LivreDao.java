@@ -12,9 +12,5 @@ public interface LivreDao extends JpaRepository<Livre, Long> {
 
    List<Livre> findByTitreContainingIgnoreCase(String mc);
 
-   Livre enregistrerNouveauLivre(Livre livre);
 
-   void supprimerLivre(Long livre);
-
-   Livre findLivreById(Long idLidvre);
 }

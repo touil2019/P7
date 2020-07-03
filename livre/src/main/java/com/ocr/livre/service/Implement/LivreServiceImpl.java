@@ -5,11 +5,12 @@ import com.ocr.livre.dao.LivreDao;
 import com.ocr.livre.model.Livre;
 import com.ocr.livre.service.LivreService;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.logging.Logger;
+
 
     @Service
     public class LivreServiceImpl implements LivreService {
@@ -35,12 +36,6 @@ import java.util.logging.Logger;
 
             return livreDao.findByTitreContainingIgnoreCase(mc);
         }
-
-        @Override
-        public Livre enregistrerNouveauLivre(Livre livre) {
-            return null;
-        }
-
 
         @Override
         public Livre findLivreById(Long idLivre) {
