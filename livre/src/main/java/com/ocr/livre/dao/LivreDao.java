@@ -8,9 +8,13 @@ import java.util.List;
 
 public interface LivreDao extends JpaRepository<Livre, Long> {
 
-   public List<Livre> findAll();
+   List<Livre> findAll();
 
-   public Livre findById(int id);
+   List<Livre> findByTitreContainingIgnoreCase(String mc);
 
+   Livre enregistrerNouveauLivre(Livre livre);
 
+   void supprimerLivre(Long livre);
+
+   Livre findLivreById(Long idLidvre);
 }
