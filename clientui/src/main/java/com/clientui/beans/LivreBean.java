@@ -1,30 +1,41 @@
 package com.clientui.beans;
 
+import com.ocr.livre.model.Emprunt;
+
+import java.util.Set;
+
 public class LivreBean {
+
     private long id;
 
     private String auteurName;
 
-    private String auteurPrenom ;
+    private String auteurPrenom;
 
-    private String titre ;
+    private String titre;
 
-    private String edition ;
+    private String edition;
 
     private String image;
+
+    private int quantiteDispo;
+
     private boolean Present;
 
+    private EmpruntBean emprunt;
 
     public LivreBean() {
     }
 
-    public LivreBean( String auteurName, String auteurPrenom, String titre, String edition, String image) {
+    public LivreBean(String auteurName, String auteurPrenom, String titre, String edition, String image, int quantiteDispo, EmpruntBean emprunt) {
 
         this.auteurName = auteurName;
         this.auteurPrenom = auteurPrenom;
         this.titre = titre;
         this.edition = edition;
+        this.quantiteDispo = quantiteDispo;
         this.image = image;
+        this.emprunt = emprunt;
 
     }
 
@@ -64,6 +75,7 @@ public class LivreBean {
         this.titre = titre;
     }
 
+
     public String getEdition() {
         return edition;
     }
@@ -81,22 +93,38 @@ public class LivreBean {
     }
 
 
+    public int getQuantiteDispo() {
+        return quantiteDispo;
+    }
+
+    public void setQuantiteDispo(int quantiteDispo) {
+        this.quantiteDispo = quantiteDispo;
+    }
 
     @Override
     public String toString() {
-        return "LivreBean{" +
+        return "Livre{" +
                 "id=" + id +
                 ", auteurName='" + auteurName + '\'' +
                 ", auteurPrenom='" + auteurPrenom + '\'' +
                 ", titre='" + titre + '\'' +
                 ", edition='" + edition + '\'' +
                 ", image='" + image + '\'' +
+                ", quantiteDispo='" + quantiteDispo + '\'' +
+                ", emprunt='" + emprunt + '\'' +
                 '}';
     }
 
-
     public boolean isPresent() {
         return Present;
+    }
+
+    public EmpruntBean getEmprunt() {
+        return emprunt;
+    }
+
+    public void setEmprunt(EmpruntBean emprunt) {
+        this.emprunt = emprunt;
     }
 }
 
