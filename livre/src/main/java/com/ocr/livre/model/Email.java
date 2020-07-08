@@ -1,9 +1,6 @@
 package com.ocr.livre.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity
@@ -17,6 +14,7 @@ public class Email {
 
     private String objet ;
 
+@Column(columnDefinition = "TEXT")
     private String contenu ;
 
     public Email() {

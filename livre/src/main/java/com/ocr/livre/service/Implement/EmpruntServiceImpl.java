@@ -44,7 +44,7 @@ public class EmpruntServiceImpl implements EmpruntService {
     @Override
     public List<Emprunt> findAllByPseudoEmprunteur(String pseudoEmprunteur) {
         logger.debug("Appel empruntService méthode findAllByPseudoEmprunteur avec paramètre pseudoEmprunteur : " + pseudoEmprunteur);
-        return empruntLivreDao.findAllByPseudoEmprunteurAndEnCoursIsTrue(pseudoEmprunteur);
+        return empruntLivreDao.findAllByPseudoEmprunteurAndCloturerIsFalse(pseudoEmprunteur);
     }
 
     @Override
@@ -65,11 +65,9 @@ public class EmpruntServiceImpl implements EmpruntService {
 
         Emprunt emprunt = empruntLivreDao.findById(idEmprunt).get();
 
-        Date dateDebut = emprunt.getDateFin();
 
-
-        if (emprunt.isProlongeable() == true && emprunt.isEnCours) {
-            emprunt.setDateFin(ajouter4Semaines(dateDebut));
+        if (emprunt.isProlongeable() == true && emprunt.isCloturer()== false) {
+            emprunt.setDateFin(ajouter4Semaines( emprunt.getDateFin()));
             emprunt.setProlongeable(false);
         } else {
             return null ;
@@ -83,7 +81,8 @@ public class EmpruntServiceImpl implements EmpruntService {
         logger.debug("Appel empruntService méthode listeLivreNonRendueApresDateFin");
 
         Date dateDuJour = new Date();
-        List<Emprunt> listeEmprunt = empruntLivreDao.findAllByEnCoursTrueAndDateFinBefore(dateDuJour);
+        List<Emprunt> listeEmprunt = empruntLivreDao.findAllByCloturerIsFalseAndDateFinBefore(dateDuJour);
+        System.out.println(listeEmprunt.toString());
         return listeEmprunt;
     }
 
@@ -94,15 +93,15 @@ public class EmpruntServiceImpl implements EmpruntService {
 
         logger.debug("Appel empruntService méthode ouvrirEmprunt");
 
-        Emprunt nouvelEmprunt = new Emprunt("USER", new Date(), new Date(), (true), true, "livre1");
         Livre livre = livreDao.findById(idLivre).get();
+        Emprunt nouvelEmprunt = new Emprunt("USER", new Date(), true, false,livre);
+
         Date date = new Date();
 
         nouvelEmprunt.setDateDebut(date);
         nouvelEmprunt.setDateFin(ajouter4Semaines(date));
         nouvelEmprunt.setPseudoEmprunteur(pseudoEmprunteur);
-        nouvelEmprunt.setLivre(livre);
-        nouvelEmprunt.setEnCours(true);
+        nouvelEmprunt.setCloturer(false);
         nouvelEmprunt.setProlongeable(true);
         livre.setQuantiteDispo(livre.getQuantiteDispo() - 1);
 
@@ -115,15 +114,18 @@ public class EmpruntServiceImpl implements EmpruntService {
 
         logger.debug("Appel empruntService méthode cloturerEmprunt");
 
-        Emprunt emprunt = new Emprunt("USER", new Date(), new Date(), (true), true, "livre1");
-        Livre livre = emprunt.getLivre();
-        Date date = new Date();
 
-        emprunt.setEnCours(false);
-        emprunt.setDateFin(date);
+        Emprunt emprunt= empruntLivreDao.findById(idEmprunt).get();
+        Livre livre = livreDao.findById(emprunt.getLivre().getId()).get();
+        emprunt.setCloturer(true);
+        emprunt.setDateFin(new Date());
         livre.setQuantiteDispo(livre.getQuantiteDispo() + 1);
 
-        return empruntLivreDao.save(emprunt);
+        empruntLivreDao.save(emprunt);
+        livreDao.save(livre);
+
+        return emprunt;
     }
+
     }
 

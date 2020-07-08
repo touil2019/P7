@@ -25,7 +25,7 @@ public class Emprunt implements Serializable {
     private boolean prolongeable;
 
 
-    private boolean enCours;
+    private boolean cloturer;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -33,17 +33,18 @@ public class Emprunt implements Serializable {
     private Livre livre;
 
 
-    public Emprunt(String user, Date date, Date date1, boolean b, boolean b1, String livre) {
+    public Emprunt() {
+
+
         super();
     }
 
-    public Emprunt(Long idEmprunt, String pseudoEmprunteur, Date dateDebut, Date dateFin, boolean prolongeable, boolean enCours, Livre livre) {
-        this.idEmprunt = idEmprunt;
+    public Emprunt(String pseudoEmprunteur, Date dateDebut,  boolean prolongeable, boolean cloturer, Livre livre) {
         this.pseudoEmprunteur = pseudoEmprunteur;
         this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
+
         this.prolongeable = prolongeable;
-        this.enCours = enCours;
+        this.cloturer = cloturer;
         this.livre = livre;
     }
 
@@ -87,12 +88,12 @@ public class Emprunt implements Serializable {
         this.prolongeable = prolongeable;
     }
 
-    public boolean isEnCours() {
-        return enCours;
+    public boolean isCloturer() {
+        return cloturer;
     }
 
-    public void setEnCours(boolean enCours) {
-        this.enCours = enCours;
+    public void setCloturer(boolean enCours) {
+        this.cloturer = enCours;
     }
 
     public Livre getLivre() {
@@ -111,7 +112,7 @@ public class Emprunt implements Serializable {
                 ", dateDebut=" + dateDebut +
                 ", dateFin=" + dateFin +
                 ", prolongeable=" + prolongeable +
-                ", enCours=" + enCours +
+                ", enCours=" + cloturer +
                 ", livre=" + livre +
                 '}';
 

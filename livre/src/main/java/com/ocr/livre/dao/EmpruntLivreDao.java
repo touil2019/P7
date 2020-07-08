@@ -16,11 +16,12 @@ public interface EmpruntLivreDao extends JpaRepository<Emprunt, Long> {
     List<Emprunt> findAll();
 
     Optional<Emprunt> findById(Long idEmprunt);
-    
 
-    List<Emprunt> findAllByPseudoEmprunteurAndEnCoursIsTrue(String pseudoEmprunteur);
 
-    List<Emprunt> findAllByEnCoursTrueAndDateFinBefore(Date dateDuJour);
+
+    List<Emprunt> findAllByPseudoEmprunteurAndCloturerIsFalse(String pseudoEmprunteur);
+
+    List<Emprunt> findAllByCloturerIsFalseAndDateFinBefore(Date dateDuJour);
 
 
 }
