@@ -66,12 +66,12 @@ public class EmailServiceImpl implements EmailService {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             String strDate = sdf.format(dateFin);
 
-            UtilisateurBean utilisateur = microserviceUtilisateurProxy.login(e.getPseudoEmprunteur());
+            UtilisateurBean utilisateur = microserviceUtilisateurProxy.login(e.getUsername());
 
             logger.info("Appel EmailServiceImpl méthode envoyerEmailRelance à l'adresse : " + utilisateur.getEmail() + " pour le livre : " +e.getLivre().getTitre() + " pour l'emprunt id : " + e.getIdEmprunt());
 
             String text = email.getContenu()
-                    .replace("[NOMUTILISATEUR]", e.getPseudoEmprunteur())
+                    .replace("[NOMUTILISATEUR]", e.getUsername())
                     .replace("[TITRELIVRE]", e.getLivre().getTitre())
                     .replace("[DATEFIN]", strDate);
 

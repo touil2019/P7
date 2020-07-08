@@ -100,7 +100,7 @@ public class EmpruntServiceImpl implements EmpruntService {
 
         nouvelEmprunt.setDateDebut(date);
         nouvelEmprunt.setDateFin(ajouter4Semaines(date));
-        nouvelEmprunt.setPseudoEmprunteur(pseudoEmprunteur);
+        nouvelEmprunt.setUsername(pseudoEmprunteur);
         nouvelEmprunt.setLivre(livre);
         nouvelEmprunt.setEnCours(true);
         nouvelEmprunt.setProlongeable(true);

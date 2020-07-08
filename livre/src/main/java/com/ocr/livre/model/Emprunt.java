@@ -34,7 +34,7 @@ public class Emprunt implements Serializable {
     private Livre livre;
 
 
-    public Emprunt(String user, Date date, Date date1, boolean b, boolean b1, String livre1) {
+    public Emprunt(String user, Date date, Date date1, boolean b, boolean b1, String livre) {
         super();
     }
 
@@ -112,7 +112,7 @@ public class Emprunt implements Serializable {
     public String toString() {
         return "Emprunt{" +
                 "idEmprunt=" + idEmprunt +
-                ", pseudoEmprunteur='" + pseudoEmprunteur + '\'' +
+                ", Emprunteur='" + pseudoEmprunteur + '\'' +
                 ", dateDebut=" + dateDebut +
                 ", dateFin=" + dateFin +
                 ", prolongeable=" + prolongeable +
