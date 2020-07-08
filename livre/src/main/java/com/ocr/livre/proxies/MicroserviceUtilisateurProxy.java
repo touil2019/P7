@@ -18,6 +18,6 @@ public interface MicroserviceUtilisateurProxy {
     UtilisateurBean login(@PathVariable String username);
 
     @PutMapping(value = "/utilisateur/{username}/{UtiRole}")
-    public UtilisateurBean modificationPrivilege(@PathVariable String username, @PathVariable String privilege);
+    public UtilisateurBean modificationRole(@PathVariable String username, @PathVariable String privilege);
 
 }

@@ -24,7 +24,6 @@ public class Emprunt implements Serializable {
 
     private boolean prolongeable;
 
-    public boolean isEnCours;
 
     private boolean enCours;
 
@@ -89,10 +88,6 @@ public class Emprunt implements Serializable {
     }
 
     public boolean isEnCours() {
-        return isEnCours;
-    }
-
-    public boolean isEnCours(boolean b) {
         return enCours;
     }
 
