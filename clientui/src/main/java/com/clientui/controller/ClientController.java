@@ -24,8 +24,8 @@ public class ClientController {
 
         return "Accueil";
     }
-   // @RequestMapping("/details-produit/{id}")
-    //public String ficheProduit(@PathVariable int id, Model model){
+   // @RequestMapping("/details-livre/{id}")
+    //public String ficheLivre(@PathVariable int id, Model model){
 
    //     List<LivreBean> livres = livreProxy.recupererUnLivre(id);
 

@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 
-@FeignClient(name = "utilisateur", url = "localhost:9090")
+@FeignClient(name = "utilisateur", url = "localhost:9091")
 public interface MicroserviceUtilisateurProxy {
 
     @GetMapping(value = "/listeUtilisateur")
     List<UtilisateurBean> listeUtilisateur();
 
-    @GetMapping(value = "/utilisateur/{pseudo}")
-    UtilisateurBean login(@PathVariable String pseudo);
+    @GetMapping(value = "/utilisateur/{username}")
+    UtilisateurBean login(@PathVariable String username);
 
-    @PutMapping(value = "/utilisateur/{pseudo}/{privilege}")
-    public UtilisateurBean modificationPrivilege(@PathVariable String pseudo, @PathVariable String privilege);
+    @PutMapping(value = "/utilisateur/{username}/{UtiRole}")
+    public UtilisateurBean modificationPrivilege(@PathVariable String username, @PathVariable String privilege);
 
 }

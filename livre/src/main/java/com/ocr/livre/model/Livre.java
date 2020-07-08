@@ -39,7 +39,7 @@ public class Livre {
     public Livre() {
     }
 
-    public Livre(String auteurName, String auteurPrenom, String titre, String edition, String image, int quantiteDispo) {
+    public Livre(String auteurName, String auteurPrenom, String titre, String edition, String image, Set<Emprunt> emprunt,int quantiteDispo) {
 
         this.auteurName = auteurName;
         this.auteurPrenom = auteurPrenom;
