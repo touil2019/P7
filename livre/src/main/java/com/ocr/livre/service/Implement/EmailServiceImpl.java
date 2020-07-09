@@ -30,7 +30,7 @@ public class EmailServiceImpl implements EmailService {
     @Autowired
     private JavaMailSenderImpl sender;
 
-
+    @Autowired
     private EmpruntService empruntService ;
 
     @Autowired
