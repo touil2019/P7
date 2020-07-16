@@ -15,7 +15,7 @@ public class ClientController {
     @Autowired
     private MicroserviceLivreProxy livreProxy;
 
-    @RequestMapping("/")
+    @RequestMapping("/Accueil")
     public String accueil(Model model){
 
         List<LivreBean> livres =  livreProxy.listelivres();
