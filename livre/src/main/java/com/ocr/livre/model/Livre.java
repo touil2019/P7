@@ -11,7 +11,7 @@ import java.util.Set;
 public class Livre {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_livre")
     private long id;
 
@@ -28,11 +28,11 @@ public class Livre {
     private int quantiteDispo ;
 
 
-    private boolean Present;
+
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "livre", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "livre", fetch = FetchType.EAGER)
     private Set<Emprunt> emprunt;
 
 
@@ -59,9 +59,7 @@ public class Livre {
         this.id = id;
     }
 
-    public void setPresent(boolean present) {
-        Present = present;
-    }
+
 
     public String getAuteurName() {
         return auteurName;
@@ -120,7 +118,7 @@ public class Livre {
         this.quantiteDispo = quantiteDispo;
     }
 
-    @Override
+     @Override
     public String toString() {
         return "Livre{" +
                 "id=" + id +
@@ -135,8 +133,5 @@ public class Livre {
     }
 
 
-    public boolean isPresent() {
-        return Present;
-    }
 }
 

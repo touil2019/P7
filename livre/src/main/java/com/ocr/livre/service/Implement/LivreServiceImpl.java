@@ -7,11 +7,12 @@ import com.ocr.livre.service.LivreService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+    @EnableScheduling
     @Service
     public class LivreServiceImpl implements LivreService {
 

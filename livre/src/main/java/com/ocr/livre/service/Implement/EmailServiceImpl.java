@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
@@ -66,7 +67,7 @@ public class EmailServiceImpl implements EmailService {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             String strDate = sdf.format(dateFin);
 
-            UtilisateurBean utilisateur = microserviceUtilisateurProxy.login(e.getPseudoEmprunteur());
+            UtilisateurBean utilisateur = microserviceUtilisateurProxy.recupererUnUtilisateur(e.getPseudoEmprunteur());
 
             logger.info("Appel EmailServiceImpl méthode envoyerEmailRelance à l'adresse : " + utilisateur.getEmail() + " pour le livre : " +e.getLivre().getTitre() + " pour l'emprunt id : " + e.getIdEmprunt());
 

@@ -2,7 +2,7 @@ package com.ocr.livre.beans;
 
 public class UtilisateurBean {
 
-    private Long id_Utilisateur ;
+    private Long id ;
     private String username;
     private String email;
     private String password;
@@ -12,19 +12,19 @@ public class UtilisateurBean {
         super();
     }
 
-    public UtilisateurBean(Long id_Utilisateur, String username, String password, String email) {
-        this.id_Utilisateur = id_Utilisateur;
+    public UtilisateurBean(String username, String password, String email) {
+
         this.username = username;
         this.password = password;
         this.email = email;
     }
 
-    public Long getId_Utilisateur() {
-        return id_Utilisateur;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_Utilisateur(Long id_Utilisateur) {
-        this.id_Utilisateur = id_Utilisateur;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -57,7 +57,7 @@ public class UtilisateurBean {
     @Override
     public String toString() {
         return "Utilisateur{" +
-                "idUtilisateur=" + id_Utilisateur +
+                "idUtilisateur=" + id +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\''+
                 ", password='" + password + '\'' +

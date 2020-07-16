@@ -9,6 +9,7 @@ import com.ocr.livre.service.EmpruntService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +18,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-
+@EnableScheduling
 @Service
 public class EmpruntServiceImpl implements EmpruntService {
 

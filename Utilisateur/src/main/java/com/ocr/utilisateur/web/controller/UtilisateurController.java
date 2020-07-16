@@ -16,14 +16,14 @@ public class UtilisateurController {
     @Autowired
     private UtilisateurDao utilisateurDao;
 
-    @GetMapping("/all-account")
+    @GetMapping("/listeUtilisateur")
     public List<UtilisateurLivre> utilLivreList (){
         List<UtilisateurLivre> utilLivres = utilisateurDao.findAll();
 
         return utilLivres;
     }
 
-    @GetMapping("/{username}/login")
+    @GetMapping("/utilisateur/{username}")
     public UtilisateurLivre login (@PathVariable String username){
         Optional<UtilisateurLivre> u = utilisateurDao.findByUsername(username);
         UtilisateurLivre utilisateurLivre=null;
@@ -33,11 +33,6 @@ public class UtilisateurController {
         return utilisateurLivre;
     }
 
-    @PostMapping(value = "/registerPost")
-    public UtilisateurLivre register(@RequestBody UtilisateurLivre utilLivre) {
-        utilisateurDao.save(utilLivre);
-        return utilLivre;
-    }
 
 
 }

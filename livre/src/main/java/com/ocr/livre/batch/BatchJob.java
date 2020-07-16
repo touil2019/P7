@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import javax.mail.MessagingException;
 import java.util.logging.Logger;
 
 @Component
@@ -17,7 +18,7 @@ public class BatchJob {
     EmailService emailService;
 
     @Scheduled(cron = "*/10 * * * * *")
-    public void lendingRevival() throws Exception {
+    public void lendingRevival() throws MessagingException {
     //    logger.info("Execution du batch");
         System.out.println("Début du batch");
 

@@ -22,7 +22,7 @@ public class LivreController {
 
 
 
-    @GetMapping(value = "/liste")
+    @GetMapping(value = "/Livres")
     public List<Livre> listeLivre(){
         return livreService.findAll();
     }
@@ -34,7 +34,7 @@ public class LivreController {
     }
 
 
-    @GetMapping(value = "/livre/{idLivre}")
+    @GetMapping(value = "/Livre/{idLivre}")
     public Livre findById(@PathVariable("idLivre")Long idLidvre){
         return livreService.findLivreById(idLidvre);
     }

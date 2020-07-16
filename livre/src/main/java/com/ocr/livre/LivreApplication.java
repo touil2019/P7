@@ -65,24 +65,30 @@ private EmpruntServiceImpl empruntService;
 		Livre livre9 = new Livre("LEE","Harper","Ne Tirez Pas Sur L'Oiseau Moqueur","LE LIVRE DE POCHE","https://m.media-amazon.com/images/I/41mY4e0kS9L.jpg",1);
 		livreDao.save(livre9);
 
-		Emprunt emprunt1 = new Emprunt( "USER", new GregorianCalendar(2020,01,12).getTime(), true,false,livre1 );
+		Emprunt emprunt1 = new Emprunt( "user", new GregorianCalendar(2020,01,12).getTime(), true,false,livre1 );
 		emprunt1.setDateFin(empruntService.ajouter4Semaines(emprunt1.getDateDebut()));
 		empruntLivreDao.save(emprunt1);
 		/*
 		Emprunt emprunt2 = new Emprunt("USER",new Date(),empruntService.ajouter4Semaines(new Date()),true,false,livre4);
+		emprunt2.setDateFin(empruntService.ajouter4Semaines(emprunt2.getDateDebut()));
 		empruntLivreDao.save(emprunt2);
 
 		Emprunt emprunt3 = new Emprunt("USER",new Date(),empruntService.ajouter4Semaines(new Date()),true,false,livre7);
+		emprunt3.setDateFin(empruntService.ajouter4Semaines(emprunt3.getDateDebut()));
 		empruntLivreDao.save(emprunt3);
 
 		Emprunt emprunt4 = new Emprunt("ADMIN",new Date(),empruntService.ajouter4Semaines(new Date()),true,false,livre2);
+		emprunt4.setDateFin(empruntService.ajouter4Semaines(emprunt4.getDateDebut()));
 		empruntLivreDao.save(emprunt4);
 
 		Emprunt emprunt5 = new Emprunt("ADMIN",new Date(),empruntService.ajouter4Semaines(new Date()),true,false,livre5);
+		emprunt5.setDateFin(empruntService.ajouter4Semaines(emprunt5.getDateDebut()));
 		empruntLivreDao.save(emprunt5);
 
 		Emprunt emprunt6 = new Emprunt("ADMIN",new Date(),empruntService.ajouter4Semaines(new Date()),true,false,livre8);
+		emprunt6.setDateFin(empruntService.ajouter4Semaines(emprunt6.getDateDebut()));
 		empruntLivreDao.save(emprunt6);*/
+
 
 		Email email = new Email();
 		email.setNom("relance");

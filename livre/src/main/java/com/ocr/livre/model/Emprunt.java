@@ -104,17 +104,5 @@ public class Emprunt implements Serializable {
         this.livre = livre;
     }
 
-    @Override
-    public String toString() {
-        return "Emprunt{" +
-                "idEmprunt=" + idEmprunt +
-                ", Emprunteur='" + pseudoEmprunteur + '\'' +
-                ", dateDebut=" + dateDebut +
-                ", dateFin=" + dateFin +
-                ", prolongeable=" + prolongeable +
-                ", enCours=" + cloturer +
-                ", livre=" + livre +
-                '}';
 
-    }
 }
