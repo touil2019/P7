@@ -1,6 +1,6 @@
 package com.clientui.beans;
 
-import com.ocr.livre.model.Emprunt;
+
 
 import java.util.Set;
 

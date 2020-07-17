@@ -17,8 +17,6 @@ public interface EmpruntLivreDao extends JpaRepository<Emprunt, Long> {
 
     Optional<Emprunt> findById(Long idEmprunt);
 
-
-
     List<Emprunt> findAllByPseudoEmprunteurAndCloturerIsFalse(String pseudoEmprunteur);
 
     List<Emprunt> findAllByCloturerIsFalseAndDateFinBefore(Date dateDuJour);

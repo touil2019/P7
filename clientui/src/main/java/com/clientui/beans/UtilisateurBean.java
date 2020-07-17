@@ -1,57 +1,30 @@
 package com.clientui.beans;
 
-import com.ocr.utilisateur.model.UtiRole;
-import com.ocr.utilisateur.security.BCryptEncoderConfig;
+import com.clientui.security.UtiRole;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UtilisateurBean {
+public class UtilisateurBean implements UserDetails {
 
-    @Id
-    @GeneratedValue
     private Long id;
-    @Size(max=50)
-    @NotBlank
-    @NotEmpty( message = "Merci de saisir un pseudo" )
+
+
     private String username;
-    @Size(max=100)
-    @NotBlank
-    @Email( message = "Merci de saisir une adresse mail valide." )
-    @NotEmpty( message = "Merci de saisir une adresse email" )
+
     private String email;
-    @Size(max=100)
-    @NotBlank
+
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    @ElementCollection(fetch = FetchType.EAGER)
     private Set<UtiRole> userRoleList;
 
     public UtilisateurBean(){
     }
 
-    public UtilisateurBean(@Size(max=50)
-                            @NotBlank
-                            @NotEmpty( message = "Merci de saisir un pseudo" )String username,
-                            @Size(max=100)
-                            @NotBlank
-                            @Email( message = "Merci de saisir une adresse mail valide." )
-                            @NotEmpty( message = "Merci de saisir une adresse email" )String email,
-                            @Size(max=100)
-                            @NotBlank
-                                    String password){
-
-        this.username = username;
-        this.email = email;
-        this.password = BCryptEncoderConfig.passwordencoder().encode(password);
-
-    }
 
     public Long getId() {
         return id;
@@ -63,6 +36,26 @@ public class UtilisateurBean {
 
     public String getUsername() {
         return username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public Set<UtiRole> getUserRoleList() {
@@ -83,6 +76,11 @@ public class UtilisateurBean {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
 
     public String getPassword() {

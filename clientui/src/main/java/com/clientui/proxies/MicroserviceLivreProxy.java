@@ -1,14 +1,15 @@
 package com.clientui.proxies;
 
 
+import com.clientui.beans.EmpruntBean;
 import com.clientui.beans.LivreBean;
-import com.ocr.livre.model.Livre;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 
 @FeignClient(name = "microServiceLivre", url = "localhost:9090")
 
@@ -22,7 +23,16 @@ public interface MicroserviceLivreProxy {
     LivreBean recupererUnLivre(@PathVariable("id") int id);
 
     @GetMapping(value = "/listeRecherche")
-    List<Livre> listeLivreRecherche(@RequestParam(name = "mc")String mc);
+    List<LivreBean> listeLivreRecherche(@RequestParam(name = "mc")String mc);
+
+    @GetMapping(value= "/Livre/{id}/supprimer")
+    List<LivreBean> supprimerUnlivre(int id);
+
+    @GetMapping(value="/MonProfile")
+    List<EmpruntBean> findAll();
+
+    @GetMapping("/")
+    Optional<EmpruntBean> findById(Long idEmprunt);
 
 
 }

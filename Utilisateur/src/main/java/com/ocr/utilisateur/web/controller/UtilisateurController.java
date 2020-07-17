@@ -24,8 +24,8 @@ public class UtilisateurController {
     }
 
     @GetMapping("/utilisateur/{username}")
-    public UtilisateurLivre login (@PathVariable String username){
-        Optional<UtilisateurLivre> u = utilisateurDao.findByUsername(username);
+    public UtilisateurLivre connexion (@PathVariable String username){
+        Optional<UtilisateurLivre> u = utilisateurDao.findByUsername(username.toLowerCase());
         UtilisateurLivre utilisateurLivre=null;
         if (u.isPresent()) {
             utilisateurLivre = u.get();

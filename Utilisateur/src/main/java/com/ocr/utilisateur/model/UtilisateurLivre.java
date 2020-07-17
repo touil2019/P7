@@ -2,17 +2,19 @@ package com.ocr.utilisateur.model;
 
 
 import com.ocr.utilisateur.security.BCryptEncoderConfig;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class UtilisateurLivre {
+public class UtilisateurLivre implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
@@ -29,8 +31,8 @@ public class UtilisateurLivre {
     @NotBlank
     private String password;
 
+    @ElementCollection(targetClass = UtiRole.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
-    @ElementCollection(fetch = FetchType.EAGER)
     private Set<UtiRole> userRoleList;
 
     public UtilisateurLivre() {
@@ -93,9 +95,9 @@ public class UtilisateurLivre {
         this.password = password;
     }
 
-    public void grantAuthority(UtiRole authority) {
+    public void grantAuthority() {
         if ( userRoleList == null ) userRoleList = new HashSet<>();
-        userRoleList.add(authority);
+        userRoleList.add(UtiRole.USER);
     }
     @Override
     public String toString(){
