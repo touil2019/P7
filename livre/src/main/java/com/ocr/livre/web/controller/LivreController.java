@@ -29,7 +29,8 @@ public class LivreController {
 
 
     @GetMapping(value = "/listeRecherche")
-    public List<Livre> listeLivreRecherche(@RequestParam(name = "mc")String mc){
+    public List<Livre> listeLivreRecherche(@RequestParam(name = "mc",defaultValue = "")String mc){
+
         return livreService.findByTitreContainingIgnoreCase(mc);
     }
 

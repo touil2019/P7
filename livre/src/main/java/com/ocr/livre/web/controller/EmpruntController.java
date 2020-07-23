@@ -21,11 +21,7 @@ public class EmpruntController {
     @Autowired
     EmpruntService empruntService ;
 
-    @GetMapping(value = "/listeEmprunt")
-    public List<Emprunt> listeEmprunt(){
-        logger.debug("Appel controlleur listeEmprunt");
-        return empruntService.findAll();
-    }
+
 
     @GetMapping(value = "/emprunt/id/{idEmprunt}")
     public Optional<Emprunt> findById(@RequestParam Long idEmprunt){

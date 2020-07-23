@@ -28,8 +28,8 @@ public interface MicroserviceLivreProxy {
     @GetMapping(value= "/Livre/{id}/supprimer")
     List<LivreBean> supprimerUnlivre(int id);
 
-    @GetMapping(value="/MonProfile")
-    List<EmpruntBean> findAll();
+    @GetMapping(value="/emprunt/pseudo/{pseudoEmprunteur}")
+    List<EmpruntBean> listeDEmpruntParUtilisateur(@PathVariable("pseudoEmprunteur") String pseudoEmprunteur );
 
     @GetMapping("/")
     Optional<EmpruntBean> findById(Long idEmprunt);

@@ -35,7 +35,7 @@ import java.util.List;
 
             logger.info("Appel LivreServiceImpl méthode findByTitreContainingIgnoreCase avec paramètre mc : " +mc );
 
-            return livreDao.findByTitreContainingIgnoreCase(mc);
+            return livreDao.chercher(mc);
         }
 
         @Override
