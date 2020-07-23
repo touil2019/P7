@@ -66,8 +66,9 @@ public class ClientController {
 
         UtilisateurBean utilisateur = (UtilisateurBean) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("utilisateur", utilisateur);
-        List<EmpruntBean> listEmprunt=
-        model.addAttribute("listTopo", listTopo);
+
+        List<EmpruntBean> listEmprunt= livreProxy.listeDEmpruntParUtilisateur("pseudoEmprunteur");
+        model.addAttribute("ListEmprunt",listEmprunt);
 
         return "/profil";
 
