@@ -35,8 +35,8 @@
         <span class="navbar-toggler-icon"></span>
         <nav class="nav navbar-nav">
             <ul class="navbar-nav m-auto">
-                <li  class="nav-item active"><a class="btn btn-primary" th:href="@{/site}">Site</a></li>
-                <li class="nav-item"><a class="btn btn-primary" th:href="@{/Livres/trouver}">Rechercher</a></li>
+                <li  class="nav-item active"><a class="btn btn-primary" th:href="@{/}">Accueil</a></li>
+                <li class="nav-item"><a class="btn btn-primary" th:href="@{/L}">Rechercher</a></li>
                 <li class="nav-item"><a class="btn btn-primary" th:if="${#request.userPrincipal != null}" th:href="@{/Livre}">livre</a></li>
                 <li class="nav-item"><a class="btn btn-primary" th:if="${#request.userPrincipal != null}" th:href="@{/profil}">Mon Compte</a></li>
                 <li class="nav-item"><a class="btn btn-primary" th:if="${#request.userPrincipal == null}" th:href="@{/login}">Connexion</a></li>

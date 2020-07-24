@@ -18,7 +18,7 @@ public class ClientController {
     @Autowired
     private MicroserviceLivreProxy livreProxy;
 
-    @RequestMapping("/Livres")
+    @RequestMapping("/")
     public String accueil(Model model,@RequestParam(name = "mc")String mc){
 
         List<LivreBean>livres = livreProxy.listeLivreRecherche(mc);
@@ -48,19 +48,6 @@ public class ClientController {
        return "redirect:/Accueil";
     }
 
-    @GetMapping("/Livres/listeRecherche")
-    public String listeLivreRecherche(Model model,@RequestParam(name = "mc")String mc)
-
-    {
-        List<LivreBean>livres = livreProxy.listeLivreRecherche(mc);
-        model.addAttribute("livres", livres);
-        model.addAttribute("mc",mc);
-        System.out.println("Récupération du livre recherche");
-
-
-        return "redirect:/";
-    }
-
     @RequestMapping(value = "/MonProfile", method = RequestMethod.GET)
     public String profil(Model model) {
 
@@ -70,7 +57,7 @@ public class ClientController {
         List<EmpruntBean> listEmprunt= livreProxy.listeDEmpruntParUtilisateur("pseudoEmprunteur");
         model.addAttribute("ListEmprunt",listEmprunt);
 
-        return "/profil";
+        return "/MonProfile";
 
     }
 }
