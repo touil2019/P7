@@ -17,6 +17,7 @@
     <bytecodeTargetLevel>
       <module name="clientui" target="1.8" />
       <module name="config-server" target="1.8" />
+      <module name="configserver" target="11" />
       <module name="eureka-server" target="1.8" />
       <module name="livre" target="1.8" />
       <module name="utilisateur" target="1.8" />
@@ -28,6 +29,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="clientui" options="-parameters" />
       <module name="config-server" options="-parameters" />
+      <module name="configserver" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="livre" options="-parameters" />
       <module name="utilisateur" options="-parameters" />
