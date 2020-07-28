@@ -3,6 +3,7 @@ package com.clientui.proxies;
 
 import com.clientui.beans.EmpruntBean;
 import com.clientui.beans.LivreBean;
+import com.clientui.configuration.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 import java.util.Optional;
 
-@FeignClient(name = "microServiceLivre", url = "localhost:9090")
+@FeignClient(name = "zuul-server",contextId = "microServiceLivre", url = "localhost:9090", configuration= FeignConfig.class)
 
 public interface MicroserviceLivreProxy {
 
