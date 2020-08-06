@@ -28,7 +28,7 @@
     <div class="navbar navbar-expand-md navbar-dark bg-primary sticky-top">
         <div class="brand_logo_container">
             <img
-                    src="https://user.oc-static.com/upload/2019/04/26/15562870935067_icon-above-font.png"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQbTSEgIlBjydMFzhjDAxyBxrCkZ_AB9rJ9uTv7uf06Sw&usqp=CAU&ec=45687376"
                     class="brand_logo" alt="Logo">
         </div>
 
@@ -36,10 +36,10 @@
         <nav class="nav navbar-nav">
             <ul class="navbar-nav m-auto">
                 <li  class="nav-item active"><a class="btn btn-primary" th:href="@{/}">Accueil</a></li>
-                <li class="nav-item"><a class="btn btn-primary" th:href="@{/L}">Rechercher</a></li>
-                <li class="nav-item"><a class="btn btn-primary" th:if="${#request.userPrincipal != null}" th:href="@{/Livre}">livre</a></li>
-                <li class="nav-item"><a class="btn btn-primary" th:if="${#request.userPrincipal != null}" th:href="@{/profil}">Mon Compte</a></li>
-                <li class="nav-item"><a class="btn btn-primary" th:if="${#request.userPrincipal == null}" th:href="@{/login}">Connexion</a></li>
+                <li class="nav-item"><a class="btn btn-primary" th:href="@{/Livres}">Rechercher</a></li>
+                <li class="nav-item"><a class="btn btn-primary" th:if="${#request.userPrincipal != null}" th:href="@{/fiche-livre}">livre</a></li>
+                <li class="nav-item"><a class="btn btn-primary" th:if="${#request.userPrincipal != null}" th:href="@{/Monprofile}">Mon Compte</a></li>
+                <li class="nav-item"><a class="btn btn-primary" th:if="${#request.userPrincipal == null}" th:href="@{/connexion}">Connexion</a></li>
                 <li class="nav-item"><a class="btn btn-primary" th:href="@{/logout}" th:if="${#request.userPrincipal != null}" >Déconnexion</a></li>
 
             </ul>

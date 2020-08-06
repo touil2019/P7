@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class ConnexionController {
+public class
+ConnexionController {
     @RequestMapping(value = "/connexion", method = RequestMethod.GET)
     public ModelAndView loginGet(Model model,
                                  @RequestParam(value = "error", required = false) String error,
@@ -29,7 +30,7 @@ public class ConnexionController {
         model.addAttribute("errorMessge", errorMessage);
 
         if (!(auth instanceof AnonymousAuthenticationToken)) {
-            return new ModelAndView("redirect:/MonProfil");
+            return new ModelAndView("redirect:/MonProfile");
         }
         return new ModelAndView("Connexion");
     }

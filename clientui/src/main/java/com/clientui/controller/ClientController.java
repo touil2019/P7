@@ -18,15 +18,15 @@ public class ClientController {
     @Autowired
     private MicroserviceLivreProxy livreProxy;
 
-    @RequestMapping("/")
-    public String accueil(Model model,@RequestParam(name = "mc")String mc){
+    @GetMapping("/")
+    public String accueil(Model model,@RequestParam(name = "mc",defaultValue = "")String mc){
 
         List<LivreBean>livres = livreProxy.listeLivreRecherche(mc);
         model.addAttribute("livres", livres);
         model.addAttribute("mc",mc);
-        System.out.println("Récupération du livre recherche");
 
-        return "Accueil";
+
+        return "accueil";
     }
 
    @RequestMapping("/details-livre/{id}")
@@ -37,7 +37,7 @@ public class ClientController {
 
         model.addAttribute("Livres", livres);
 
-       return "FicheLivre";
+       return "fiche-livre";
     }
 
     @GetMapping("/details-livre/{id}/Livre")
@@ -45,7 +45,7 @@ public class ClientController {
 
        List <LivreBean> livres = livreProxy.supprimerUnlivre(id);
 
-       return "redirect:/Accueil";
+       return "redirect:/accueil";
     }
 
     @RequestMapping(value = "/MonProfile", method = RequestMethod.GET)
