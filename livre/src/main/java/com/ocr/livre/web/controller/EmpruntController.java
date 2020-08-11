@@ -35,8 +35,8 @@ public class EmpruntController {
         return empruntService.findAllByPseudoEmprunteur(pseudoEmprunteur) ;
     }
 
-    @PutMapping(value = "/emprunt/prolonger/{idEmprunt}")
-    public ResponseEntity<Emprunt> prolongerEmprunt(@PathVariable("idEmprunt")Long idEmprunt){
+    @PutMapping(value = "/emprunt/{id}/prolonger")
+    public ResponseEntity<Emprunt> prolongerEmprunt(@PathVariable("id")Long idEmprunt){
 
         logger.debug("Appel controlleur prolongerEmprunt");
 
@@ -50,16 +50,16 @@ public class EmpruntController {
                 HttpStatus.BAD_REQUEST);
     }
 
-    @PostMapping(value = "/emprunt/{idLivre}")
-    public Emprunt ouvrirEmprunt(@PathVariable Long idLivre, @RequestParam String pseudoEmprunteur){
+    @PostMapping(value = "/emprunt/{id}")
+    public Emprunt ouvrirEmprunt(@PathVariable("id") Long idLivre, @RequestParam String pseudoEmprunteur){
 
         logger.debug("Appel controlleur ouvrirEmprunt");
 
         return empruntService.ouvrirEmprunt(idLivre, pseudoEmprunteur);
     }
 
-    @PutMapping(value = "emprunt/{idEmprunt}")
-    public Emprunt cloturerEmprunt(@RequestParam Long idEmprunt){
+    @PutMapping(value = "emprunt/{id}/cloturer")
+    public Emprunt cloturerEmprunt(@PathVariable("id") Long idEmprunt){
         logger.debug("Appel controlleur cloturerEmprunt");
         return empruntService.cloturerEmprunt(idEmprunt);
     }

@@ -69,23 +69,23 @@ private EmpruntServiceImpl empruntService;
 		emprunt1.setDateFin(empruntService.ajouter4Semaines(emprunt1.getDateDebut()));
 		empruntLivreDao.save(emprunt1);
 
-		Emprunt emprunt2 = new Emprunt("USER",new GregorianCalendar(2020,07,28).getTime(),true,false,livre4);
+		Emprunt emprunt2 = new Emprunt("user",new GregorianCalendar(2020,07,28).getTime(),true,false,livre4);
 		emprunt2.setDateFin(empruntService.ajouter4Semaines(emprunt2.getDateDebut()));
 		empruntLivreDao.save(emprunt2);
 
-		Emprunt emprunt3 = new Emprunt("USER",new GregorianCalendar(2020,8,01).getTime(),true,false,livre7);
+		Emprunt emprunt3 = new Emprunt("user",new GregorianCalendar(2020,8,01).getTime(),true,false,livre7);
 		emprunt3.setDateFin(empruntService.ajouter4Semaines(emprunt3.getDateDebut()));
 		empruntLivreDao.save(emprunt3);
 
-		Emprunt emprunt4 = new Emprunt("ADMIN",new GregorianCalendar(2020,7,22).getTime(),true,false,livre2);
+		Emprunt emprunt4 = new Emprunt("admin",new GregorianCalendar(2020,7,22).getTime(),true,false,livre2);
 		emprunt4.setDateFin(empruntService.ajouter4Semaines(emprunt4.getDateDebut()));
 		empruntLivreDao.save(emprunt4);
 
-		Emprunt emprunt5 = new Emprunt("ADMIN",new GregorianCalendar(2020,7,12).getTime(),true,false,livre5);
+		Emprunt emprunt5 = new Emprunt("admin",new GregorianCalendar(2020,7,12).getTime(),true,false,livre5);
 		emprunt5.setDateFin(empruntService.ajouter4Semaines(emprunt5.getDateDebut()));
 		empruntLivreDao.save(emprunt5);
 
-		Emprunt emprunt6 = new Emprunt("ADMIN",new GregorianCalendar(2020,06,06).getTime(),true,false,livre8);
+		Emprunt emprunt6 = new Emprunt("admin",new GregorianCalendar(2020,06,06).getTime(),true,false,livre8);
 		emprunt6.setDateFin(empruntService.ajouter4Semaines(emprunt6.getDateDebut()));
 		empruntLivreDao.save(emprunt6);
 

@@ -35,8 +35,8 @@ public class LivreController {
     }
 
 
-    @GetMapping(value = "/Livre/{idLivre}")
-    public Livre findById(@PathVariable("idLivre")Long idLidvre){
+    @GetMapping(value = "/Livre/{id}")
+    public Livre findById(@PathVariable("id")Long idLidvre){
         return livreService.findLivreById(idLidvre);
     }
 
@@ -47,8 +47,8 @@ public class LivreController {
     }
 
 
-    @GetMapping(value = "/livre/supprimer")
-    public void supprimerLivre(Long idLivre){
+    @GetMapping(value = "/livre/supprimer/{id}")
+    public void supprimerLivre(@PathVariable ("id") Long idLivre){
        livreService.supprimerLivre(idLivre);
     }
 

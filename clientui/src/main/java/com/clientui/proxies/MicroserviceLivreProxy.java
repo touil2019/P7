@@ -8,6 +8,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -23,19 +24,19 @@ public interface MicroserviceLivreProxy {
     List<LivreBean> listelivres();
 
     @GetMapping(value = "/microservicelivre/Livre/{id}")
-    LivreBean recupererUnLivre(@PathVariable("id") int id);
+    LivreBean recupererUnLivre(@PathVariable("id") Long id);
 
     @GetMapping(value = "/microservicelivre/listeRecherche")
     List<LivreBean> listeLivreRecherche(@RequestParam(name = "mc")String mc);
 
     @GetMapping(value= "/microservicelivre/Livre/{id}/supprimer")
-    List<LivreBean> supprimerUnlivre(int id);
+    List<LivreBean> supprimerUnlivre(@PathVariable("id") Long id);
 
     @GetMapping(value="/microservicelivre/emprunt/pseudo/{pseudoEmprunteur}")
     List<EmpruntBean> listeDEmpruntParUtilisateur(@PathVariable("pseudoEmprunteur") String pseudoEmprunteur );
 
-    @GetMapping("/microservicelivre/")
-    Optional<EmpruntBean> findById(Long idEmprunt);
+    @PutMapping("/microservicelivre/emprunt/{id}/prolonger")
+    EmpruntBean prolongerEmprunt(@PathVariable ("id") Long idEmprunt);
 
 
 }

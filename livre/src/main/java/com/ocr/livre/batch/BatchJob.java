@@ -17,7 +17,7 @@ public class BatchJob {
     @Autowired
     EmailService emailService;
 
-    @Scheduled(cron = "* */30 * * * *")
+    @Scheduled(cron = "0 0 4 * * *")
     public void lendingRevival() throws MessagingException {
     //    logger.info("Execution du batch");
         System.out.println("Début du batch");

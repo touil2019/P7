@@ -70,10 +70,13 @@ public class EmpruntServiceImpl implements EmpruntService {
         if (emprunt.isProlongeable() == true && emprunt.isCloturer()== false) {
             emprunt.setDateFin(ajouter4Semaines( emprunt.getDateFin()));
             emprunt.setProlongeable(false);
+            empruntLivreDao.save(emprunt);
+            return emprunt;
+
         } else {
             return null ;
         }
-        return empruntLivreDao.save(emprunt);
+
     }
 
     @Override

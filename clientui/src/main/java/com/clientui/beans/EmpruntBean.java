@@ -20,15 +20,10 @@ public class EmpruntBean {
     private LivreBean livre ;
 
 
-    public EmpruntBean(Long idEmprunt, String pseudoEmprunteur, Date dateDebut, Date dateFin, boolean prolongeable, boolean enCours, LivreBean livre) {
-        this.idEmprunt = idEmprunt;
-        this.pseudoEmprunteur = pseudoEmprunteur;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.prolongeable = prolongeable;
-        this.enCours = enCours;
-        this.livre = livre;
+    public EmpruntBean() {
+
     }
+
 
     public Long getIdEmprunt() {
         return idEmprunt;

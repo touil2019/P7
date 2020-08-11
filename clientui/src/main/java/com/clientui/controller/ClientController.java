@@ -11,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ClientController {
@@ -30,7 +32,7 @@ public class ClientController {
     }
 
    @RequestMapping("/details-livre/{id}")
-    public String ficheLivre(@PathVariable int id, Model model){
+    public String ficheLivre(@PathVariable Long id, Model model){
 
 
         LivreBean livres = livreProxy.recupererUnLivre(id);
@@ -40,13 +42,7 @@ public class ClientController {
        return "fiche-livre";
     }
 
-    @GetMapping("/details-livre/{id}/Livre")
-    public String supprimerUnLivre(Model model, @PathVariable(value = "id") int id){
 
-       List <LivreBean> livres = livreProxy.supprimerUnlivre(id);
-
-       return "redirect:/accueil";
-    }
 
     @RequestMapping(value = "/MonProfile", method = RequestMethod.GET)
     public String profil(Model model) {
@@ -54,10 +50,29 @@ public class ClientController {
         UtilisateurBean utilisateur = (UtilisateurBean) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("utilisateur", utilisateur);
 
-        List<EmpruntBean> listEmprunt= livreProxy.listeDEmpruntParUtilisateur("pseudoEmprunteur");
-        model.addAttribute("ListEmprunt",listEmprunt);
+        List<EmpruntBean> listEmprunt= livreProxy.listeDEmpruntParUtilisateur(utilisateur.getUsername());
+        model.addAttribute("listEmprunt",listEmprunt);
+
+        model.addAttribute("livres",listEmprunt);
 
         return "/MonProfile";
 
     }
+
+    @GetMapping(value = "/emprunt/prolongerEmprunt/{id}")
+    public String prolongerEmprunt(@PathVariable("id")Long idEmprunt,Model model) {
+
+        System.out.println("Appel Emprunt méthode prolongerEmprunt");
+
+            UtilisateurBean utilisateur = (UtilisateurBean) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+            livreProxy.prolongerEmprunt(idEmprunt);
+
+            List<EmpruntBean> listEmprunt= livreProxy.listeDEmpruntParUtilisateur(utilisateur.getUsername());
+            model.addAttribute("listEmprunt",listEmprunt);
+
+
+            return "redirect:/MonProfile";
+        }
+
 }

@@ -34,16 +34,16 @@
 <div class="container">
     <form th:action="@{/}">
         <label>Mot clé:</label>
-        <input type="text" name="motCle"/>
+        <input type="text" name="mc"/>
         <button class="btn btn-primary">Chercher</button>
     </form>
 </div>
 <div class="container">
 
-    <div class=" container spacer row justify-content-center">
+    <div class=" container row justify-content-center">
         <div class="card-deck">
             <div class="card" th:each="livre : ${livres}">
-                <a class="text-center" th:href="@{|/fiche-livre/${livre.id}|}">
+                <a class="text-center" th:href="@{/details-livre/{id} (id=${livre.id})}">
                     <img  th:src="${livre.image}"  style="width:130px">
                 </a>
                 <div class="card-body">
