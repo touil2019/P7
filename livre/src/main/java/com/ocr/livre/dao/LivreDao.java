@@ -17,4 +17,6 @@ public interface LivreDao extends JpaRepository<Livre, Long> {
            + "or lower(l.auteurPrenom)  like lower(concat('%', :x,'%'))")
      List<Livre>chercher(@Param("x") String mc);
 
+   List<Livre> findAllByTitre(String titre);
+
 }

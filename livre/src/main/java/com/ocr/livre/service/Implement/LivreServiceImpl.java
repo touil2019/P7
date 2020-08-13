@@ -1,7 +1,9 @@
 package com.ocr.livre.service.Implement;
 
 import com.ocr.livre.LivreApplication;
+import com.ocr.livre.dao.EmpruntLivreDao;
 import com.ocr.livre.dao.LivreDao;
+import com.ocr.livre.model.Emprunt;
 import com.ocr.livre.model.Livre;
 import com.ocr.livre.service.LivreService;
 import org.apache.logging.log4j.LogManager;
@@ -20,6 +22,8 @@ import java.util.List;
 
         @Autowired
         LivreDao livreDao;
+        @Autowired
+        EmpruntLivreDao empruntLivreDao;
 
 
         @Override
@@ -43,7 +47,16 @@ import java.util.List;
 
             logger.info("Appel LivreServiceImpl méthode findLivreById avec paramètre idLidvre : " +idLivre );
 
-            return livreDao.findById(idLivre).get();
+            Livre livre= livreDao.findById(idLivre).get();
+
+            List<Livre> livres= livreDao.findAllByTitre(livre.getTitre());
+
+
+            List<Emprunt> emprunts= empruntLivreDao.listeDEmpruntActifParLivre(livre.getTitre());
+
+            livre.setQuantiteDispo(livres.size() - emprunts.size());
+
+            return livre;
         }
 
         @Override

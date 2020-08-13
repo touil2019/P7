@@ -31,25 +31,25 @@
 
 <body layout:fragment="content">
 
-<div class="container">
-    <form th:action="@{/}">
-        <label>Mot clé:</label>
-        <input type="text" name="mc"/>
-        <button class="btn btn-primary">Chercher</button>
-    </form>
-</div>
+
 <div class="container">
 
-    <div class=" container row justify-content-center">
-        <div class="card-deck">
-            <div class="card" th:each="livre : ${livres}">
-                <a class="text-center" th:href="@{/details-livre/{id} (id=${livre.id})}">
-                    <img  th:src="${livre.image}"  style="width:130px">
-                </a>
-                <div class="card-body">
-
+    <div class=" container ">
+        <div class="">
+            <div class="row" >
+                <div class="card col-sm-4 " th:each="livre : ${livres}" >
+                    <a class="text-center" th:href="@{/details-livre/{id} (id=${livre.id})}">
+                        <img  th:src="${livre.image}"   class="card-img-top" width="200" height="350">
+                    </a>
+                    <div class="card-body">
+                        <label>Titre:</label><label th:text= "${livre.titre}"></label>
+                        <label>Nom de l auteur:</label><label th:text= "${livre.auteurName}"></label>
+                        <label>Prenom de l auteur:</label><label th:text= "${livre.auteurPrenom}"></label>
+                    </div>
                 </div>
+
             </div>
+
         </div>
 
     </div>

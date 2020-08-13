@@ -35,9 +35,9 @@ public class ClientController {
     public String ficheLivre(@PathVariable Long id, Model model){
 
 
-        LivreBean livres = livreProxy.recupererUnLivre(id);
+        LivreBean livre = livreProxy.recupererUnLivre(id);
 
-        model.addAttribute("Livres", livres);
+        model.addAttribute("livre", livre);
 
        return "fiche-livre";
     }

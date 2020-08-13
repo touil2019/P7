@@ -27,20 +27,25 @@
 </head>
 <body>
 <div layout:fragment="content" th:if="${#request.userPrincipal != null}">
-    <div  class="container justify-content-center" >
+    <div  class="container" >
+        <div class="row">
+            <div class="card col-4" th:each="emprunt:${listEmprunt}">
 
-                <div class="card" th:each="emprunt:${listEmprunt}">
+                <img  th:src="${emprunt.livre.image}" class="card-img-top" width="180" height="350">
 
-                    <label>Livre:</label><label th:text="${emprunt.livre.titre}"></label>
+                <label>Livre:</label><label th:text="${emprunt.livre.titre}"></label><br/>
 
-                    <label>dateDebut:</label><label th:text="${emprunt.dateDebut}"></label>
+                <label>dateDebut:</label><label th:text="${#dates.format(emprunt.dateDebut, 'dd-MM-yyyy')}"></label><br/>
 
-                    <label>dateFin:</label><label th:text="${emprunt.dateFin}"></label>
+                <label>dateFin:</label><label th:text="${ #dates.format(emprunt.dateFin, 'dd-MM-yyyy')}"></label><br/>
 
-                    <a class="btn btn-primary" style="width:130px"
-                           th:if="${emprunt.prolongeable == true}"
-                           th:href="@{/emprunt/prolongerEmprunt/{id}(id=${emprunt.idEmprunt})}" >Prolonger</a>
-                </div>
+                <a class="btn btn-primary" style="width:130px"
+                   th:if="${emprunt.prolongeable == true}"
+                   th:href="@{/emprunt/prolongerEmprunt/{id}(id=${emprunt.idEmprunt})}" >Prolonger</a>
+
+            </div>
+
+</div>
 
     </div>
 </div>

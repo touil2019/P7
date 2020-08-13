@@ -45,7 +45,7 @@ public class EmpruntServiceImpl implements EmpruntService {
     @Override
     public List<Emprunt> findAllByPseudoEmprunteur(String pseudoEmprunteur) {
         logger.debug("Appel empruntService méthode findAllByPseudoEmprunteur avec paramètre pseudoEmprunteur : " + pseudoEmprunteur);
-        return empruntLivreDao.findAllByPseudoEmprunteurAndCloturerIsFalse(pseudoEmprunteur);
+        return empruntLivreDao.findAllByPseudoEmprunteurAndCloturerIsFalseOrderByDateDebutAsc(pseudoEmprunteur);
     }
 
     @Override

@@ -39,13 +39,12 @@ public class Livre {
     public Livre() {
     }
 
-    public Livre(String auteurName, String auteurPrenom, String titre, String edition, String image,int quantiteDispo) {
+    public Livre(String auteurName, String auteurPrenom, String titre, String edition, String image) {
 
         this.auteurName = auteurName;
         this.auteurPrenom = auteurPrenom;
         this.titre = titre;
         this.edition = edition;
-        this.quantiteDispo = quantiteDispo;
         this.image = image;
 
 
