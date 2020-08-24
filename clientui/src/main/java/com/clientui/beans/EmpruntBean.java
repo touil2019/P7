@@ -2,21 +2,38 @@ package com.clientui.beans;
 
 import java.util.Date;
 
-
+/**
+ * Bean pour l'emprunt
+ */
 public class EmpruntBean {
 
+    /**
+     * id
+     */
     private Long idEmprunt;
-
+    /**
+     * pseudo de l'emprunteur
+     */
     private String pseudoEmprunteur ;
-
+    /**
+     * Date du debut de l'emprunt
+     */
     private Date dateDebut;
-
+    /**
+     * Date + 4 semaines
+     */
     private Date dateFin;
-
+    /**
+     * emprunt prolongeable ou non
+     */
     private boolean prolongeable;
-
+    /**
+     * emrpunt en cours ou non
+     */
     private boolean enCours ;
-
+    /**
+     * relation avec la table livre
+     */
     private LivreBean livre ;
 
 

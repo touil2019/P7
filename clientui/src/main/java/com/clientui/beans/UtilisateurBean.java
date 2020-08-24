@@ -9,18 +9,31 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Bean de l utilisateur
+ */
 public class UtilisateurBean implements UserDetails {
-
+    /**
+     * identifiant de l utilisateur
+     */
     private Long id;
-
-
+    /**
+     * nom de l utilisateur
+     */
     private String username;
-
+    /**
+     * adresse email de l utilisateur
+     */
     private String email;
-
+    /**
+     * mot de passe de l utilisateur
+     */
     private String password;
-
+    /**
+     * Role de l utilisateur
+     */
     private Set<UtiRole> userRoleList;
+
 
     public UtilisateurBean(){
     }

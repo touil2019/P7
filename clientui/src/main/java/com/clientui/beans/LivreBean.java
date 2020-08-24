@@ -1,32 +1,61 @@
 package com.clientui.beans;
 
-
-
-import java.util.Set;
+/**
+ * Bean pour l entite Livre
+ */
 
 public class LivreBean {
-
+    /**
+     * identifiant du livre
+     */
     private long id;
-
+    /**
+     * Nom de l auteur
+     */
     private String auteurName;
-
+    /**
+     * Prenom de l auteur
+     */
     private String auteurPrenom;
-
+    /**
+     * titre du livre
+     */
     private String titre;
-
+    /**
+     * edition du livre
+     */
     private String edition;
-
+    /**
+     * url de l'image de couverture
+     */
     private String image;
-
+    /**
+     * nombre de livres disponibles
+     */
     private int quantiteDispo;
-
+    /**
+     * livre present ou non
+     */
     private boolean Present;
-
+    /**
+     * relation avec la table
+     */
     private EmpruntBean emprunt;
+
 
     public LivreBean() {
     }
 
+    /**
+     *Instanciation du livre
+     * @param auteurName
+     * @param auteurPrenom
+     * @param titre
+     * @param edition
+     * @param image
+     * @param quantiteDispo
+     * @param emprunt
+     */
     public LivreBean(String auteurName, String auteurPrenom, String titre, String edition, String image, int quantiteDispo, EmpruntBean emprunt) {
 
         this.auteurName = auteurName;
