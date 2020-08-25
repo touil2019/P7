@@ -85,9 +85,9 @@ private EmpruntServiceImpl empruntService;
 		emprunt5.setDateFin(empruntService.ajouter4Semaines(emprunt5.getDateDebut()));
 		empruntLivreDao.save(emprunt5);
 
-		/*Emprunt emprunt6 = new Emprunt("admin",new GregorianCalendar(2020,06,06).getTime(),true,false,livre8);
+		Emprunt emprunt6 = new Emprunt("admin",new GregorianCalendar(2020,06,06).getTime(),true,false,livre8);
 		emprunt6.setDateFin(empruntService.ajouter4Semaines(emprunt6.getDateDebut()));
-		empruntLivreDao.save(emprunt6);*/
+		empruntLivreDao.save(emprunt6);
 
 
 		Email email = new Email();

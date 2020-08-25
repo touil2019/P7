@@ -4,27 +4,42 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-
+/**
+ * entité emprunt
+ */
 @Entity
 public class Emprunt implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
+    /**
+     * id emprunt
+     */
     private Long idEmprunt;
 
-
+    /**
+     * pseudoEmprunteur
+     */
     private String pseudoEmprunteur;
 
-
+    /**
+     * date du début de l emprunt
+     */
     private Date dateDebut;
 
-
+    /**
+     * date de début + 4 semaines
+     */
     private Date dateFin;
 
-
+    /**
+     * emprunt prolongeable ou pas
+     */
     private boolean prolongeable;
-
-
+    /**
+     * emprunt clôturer ou pas
+     */
     private boolean cloturer;
 
 
@@ -39,10 +54,17 @@ public class Emprunt implements Serializable {
         super();
     }
 
+    /**
+     * constructeur de l emprunt
+     * @param pseudoEmprunteur
+     * @param dateDebut
+     * @param prolongeable
+     * @param cloturer
+     * @param livre
+     */
     public Emprunt(String pseudoEmprunteur, Date dateDebut,  boolean prolongeable, boolean cloturer, Livre livre) {
         this.pseudoEmprunteur = pseudoEmprunteur;
         this.dateDebut = dateDebut;
-
         this.prolongeable = prolongeable;
         this.cloturer = cloturer;
         this.livre = livre;

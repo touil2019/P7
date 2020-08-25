@@ -29,25 +29,43 @@ public class EmpruntServiceImpl implements EmpruntService {
     @Autowired
     LivreDao livreDao ;
 
-
+    /**
+     * trouver l ensemble des emprunts de livres
+     * @return liste d emprunt
+     */
     @Override
     public List<Emprunt> findAll() {
         logger.debug("Appel empruntService méthode findAll");
         return empruntLivreDao.findAll();
     }
 
+    /**
+     * retrouver un emprunt par son id
+     * @param idEmprunt
+     * @return un emprunt
+     */
     @Override
     public Optional<Emprunt> findById(Long idEmprunt) {
         logger.debug("Appel empruntService méthode findById avec paramètre id : " + idEmprunt);
         return empruntLivreDao.findById(idEmprunt);
     }
 
+    /**
+     * trouver tous les emprunts pour un pseudo emprunteur
+     * @param pseudoEmprunteur
+     * @return liste d emprunt
+     */
     @Override
     public List<Emprunt> findAllByPseudoEmprunteur(String pseudoEmprunteur) {
         logger.debug("Appel empruntService méthode findAllByPseudoEmprunteur avec paramètre pseudoEmprunteur : " + pseudoEmprunteur);
         return empruntLivreDao.findAllByPseudoEmprunteurAndCloturerIsFalseOrderByDateDebutAsc(pseudoEmprunteur);
     }
 
+    /**
+     * Ajoute 4 semaine à une date
+     * @param date date à laquelle les 4 semaines doivent être ajoutée
+     * @return la nouvelle date
+     */
     @Override
     public Date ajouter4Semaines(Date date){
 
@@ -59,6 +77,11 @@ public class EmpruntServiceImpl implements EmpruntService {
         return calendar.getTime();
     }
 
+    /**
+     * retourne l emprunt prolonger
+     * @param idEmprunt
+     * @return l'emprunt prolongé
+     */
     @Override
     public Emprunt prolongerEmprunt(Long idEmprunt) {
 
@@ -78,7 +101,10 @@ public class EmpruntServiceImpl implements EmpruntService {
         }
 
     }
-
+    /**
+     * Trouve tous les emprunts non rendues à date
+     * @return liste d'emprunts
+     */
     @Override
     public List<Emprunt> listeLivreNonRendueApresDateFin() {
 
@@ -90,6 +116,12 @@ public class EmpruntServiceImpl implements EmpruntService {
         return listeEmprunt;
     }
 
+    /**
+     * Enregistre un nouvel emprunt
+     * @param idLivre id du livre emprunté
+     * @param pseudoEmprunteur pseudo de l'emprunteur
+     * @return le nouvel emprunt
+     */
 
     @Transactional
     @Override
@@ -112,6 +144,11 @@ public class EmpruntServiceImpl implements EmpruntService {
         return empruntLivreDao.save(nouvelEmprunt);
     }
 
+    /**
+     * cloteur un emprunt
+     * @param idEmprunt
+     * @return emprunt cloturer
+     */
     @Transactional
     @Override
     public Emprunt cloturerEmprunt(Long idEmprunt) {

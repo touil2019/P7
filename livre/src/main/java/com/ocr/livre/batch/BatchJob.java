@@ -12,15 +12,16 @@ import java.util.logging.Logger;
 
 @Component
 public class BatchJob {
-//    private static final Logger logger = (Logger) LogManager.getLogger(LivreApplication.class);
+
+    private static final Logger logger = (Logger) LogManager.getLogger(LivreApplication.class);
 
     @Autowired
     EmailService emailService;
 
     @Scheduled(cron = "0 0 4 * * *")
     public void lendingRevival() throws MessagingException {
-    //    logger.info("Execution du batch");
-        System.out.println("Début du batch");
+      logger.info("Execution du batch");
+
 
         emailService.envoyerEmailRelance();
     }

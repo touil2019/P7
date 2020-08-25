@@ -16,6 +16,11 @@ public class UtilisateurController {
     @Autowired
     private UtilisateurDao utilisateurDao;
 
+    /**
+     * liste d'utilisateurs
+     * @return tous les utilisateurs
+     */
+
     @GetMapping("/listeUtilisateur")
     public List<UtilisateurLivre> utilLivreList (){
         List<UtilisateurLivre> utilLivres = utilisateurDao.findAll();
@@ -23,6 +28,11 @@ public class UtilisateurController {
         return utilLivres;
     }
 
+    /**
+     * trouver un utilisateur par son username
+     * @param username
+     * @return
+     */
     @GetMapping("/utilisateur/{username}")
     public UtilisateurLivre connexion (@PathVariable String username){
         Optional<UtilisateurLivre> u = utilisateurDao.findByUsername(username.toLowerCase());

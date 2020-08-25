@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.Set;
 
+/**
+ * entité livre
+ */
 @Entity
 @Table(name = "livre")
 public class Livre {
@@ -13,18 +16,33 @@ public class Livre {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_livre")
+    /**
+     * id livre
+     */
     private long id;
-
+    /**
+     * Nom de l auteur du livre
+     */
     private String auteurName;
-
+    /**
+     * Prenom de l auteur du livre
+     */
     private String auteurPrenom ;
-
+    /**
+     * titre du livre
+     */
     private String titre ;
-
+    /**
+     * edition du livre
+     */
     private String edition ;
-
+    /**
+     * url de l image de couverture du livre
+     */
     private String image;
-
+    /**
+     * quantite disponible d un livre
+     */
     private int quantiteDispo ;
 
 
@@ -39,6 +57,14 @@ public class Livre {
     public Livre() {
     }
 
+    /**
+     * constructeur d un livre
+     * @param auteurName
+     * @param auteurPrenom
+     * @param titre
+     * @param edition
+     * @param image
+     */
     public Livre(String auteurName, String auteurPrenom, String titre, String edition, String image) {
 
         this.auteurName = auteurName;

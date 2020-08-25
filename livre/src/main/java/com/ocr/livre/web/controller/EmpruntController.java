@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * controleur emprunt du microservice
+ */
+
 @RestController
 public class EmpruntController {
 
@@ -21,7 +25,11 @@ public class EmpruntController {
     @Autowired
     EmpruntService empruntService ;
 
-
+    /**
+     * retrouver un emprunt par son identifiant
+     * @param idEmprunt
+     * @return l'emprunt par l idEmprunt
+     */
 
     @GetMapping(value = "/emprunt/id/{idEmprunt}")
     public Optional<Emprunt> findById(@RequestParam Long idEmprunt){
@@ -29,12 +37,22 @@ public class EmpruntController {
         return empruntService.findById(idEmprunt);
     }
 
+    /**
+     *
+     * @param pseudoEmprunteur
+     * @return une liste d emprunt par pseudo emprunteur
+     */
     @GetMapping(value = "/emprunt/pseudo/{pseudoEmprunteur}")
     public List<Emprunt> listeEmpruntUtilisateur(@PathVariable("pseudoEmprunteur") String pseudoEmprunteur){
         logger.debug("Appel controlleur listeEmpruntUtilisateur");
         return empruntService.findAllByPseudoEmprunteur(pseudoEmprunteur) ;
     }
 
+    /**
+     * controleur pour prolonger un emprunt
+     * @param idEmprunt
+     * @return
+     */
     @PutMapping(value = "/emprunt/{id}/prolonger")
     public ResponseEntity<Emprunt> prolongerEmprunt(@PathVariable("id")Long idEmprunt){
 
@@ -50,6 +68,12 @@ public class EmpruntController {
                 HttpStatus.BAD_REQUEST);
     }
 
+    /**
+     * controleur pour l emprunt d un livre
+     * @param idLivre
+     * @param pseudoEmprunteur
+     * @return
+     */
     @PostMapping(value = "/emprunt/{id}")
     public Emprunt ouvrirEmprunt(@PathVariable("id") Long idLivre, @RequestParam String pseudoEmprunteur){
 
@@ -58,13 +82,21 @@ public class EmpruntController {
         return empruntService.ouvrirEmprunt(idLivre, pseudoEmprunteur);
     }
 
+    /**
+     * cloture d un emprunt
+     * @param idEmprunt
+     * @return
+     */
     @PutMapping(value = "emprunt/{id}/cloturer")
     public Emprunt cloturerEmprunt(@PathVariable("id") Long idEmprunt){
         logger.debug("Appel controlleur cloturerEmprunt");
         return empruntService.cloturerEmprunt(idEmprunt);
     }
 
-
+    /**
+     * liste des livres non rendu apres la date de fin
+     * @return
+     */
     @GetMapping(value = "/emprunt")
     public List<Emprunt> listeLivreNonRendueApresDateFin(){
         logger.debug("Appel controlleur listeLivreNonRendueApresDateFin");

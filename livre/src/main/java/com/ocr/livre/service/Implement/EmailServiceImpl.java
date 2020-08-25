@@ -40,6 +40,13 @@ public class EmailServiceImpl implements EmailService {
     @Autowired
     EmailDao emailDao ;
 
+    /**
+     * envoi d un email
+     * @param email adresse email
+     * @param objet objet de l email
+     * @param contenu contenu de l email
+     * @throws MessagingException
+     */
   @Override
     public void sendSimpleMessage(String email, String objet, String contenu) throws MessagingException {
 
@@ -55,6 +62,10 @@ public class EmailServiceImpl implements EmailService {
         sender.send(message);
     }
 
+    /**
+     * methode pour l envoye d une relance par email
+     * @throws MessagingException
+     */
    @Override
     public void envoyerEmailRelance() throws MessagingException {
 

@@ -25,6 +25,10 @@ import java.util.List;
         @Autowired
         EmpruntLivreDao empruntLivreDao;
 
+        /**
+         * trouver tous les livres
+         * @return liste des livres
+         */
 
         @Override
         public List<Livre> findAll() {
@@ -34,6 +38,11 @@ import java.util.List;
             return livreDao.findAll();
         }
 
+        /**
+         * trouver un livre par mc mot cle
+         * @param mc mot cle
+         * @return une liste de livres
+         */
         @Override
         public List<Livre> findByTitreContainingIgnoreCase(String mc) {
 
@@ -42,6 +51,11 @@ import java.util.List;
             return livreDao.chercher(mc);
         }
 
+        /**
+         * trouver un livre
+         * @param idLivre id du livre
+         * @return le livre
+         */
         @Override
         public Livre findLivreById(Long idLivre) {
 
@@ -59,6 +73,11 @@ import java.util.List;
             return livre;
         }
 
+        /**
+         * enregister un nouveau livre
+         * @param livre
+         * @return
+         */
         @Override
         public Livre enregistrerNouveauLivre(Livre livre){
 
@@ -76,6 +95,10 @@ import java.util.List;
             return livreDao.save(nouveauLivre);
         }
 
+        /**
+         * supprimer un livre par son id
+         * @param idLivre
+         */
         @Override
         public void supprimerLivre(Long idLivre) {
 

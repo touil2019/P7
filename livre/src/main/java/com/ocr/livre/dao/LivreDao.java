@@ -8,10 +8,21 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+/**
+ * Dao pour livre
+ */
 public interface LivreDao extends JpaRepository<Livre, Long> {
-
+    /**
+     * liste des livres
+     * @return
+     */
    List<Livre> findAll();
 
+    /**
+     * requete pour permettre la recherche d un livre par mc mot cle
+     * @param mc
+     * @return
+     */
    @Query("select l from Livre l  where lower(l.titre) like lower(concat('%', :x,'%'))"
            + " or lower(l.auteurName)  like lower(concat('%', :x,'%')) "
            + "or lower(l.auteurPrenom)  like lower(concat('%', :x,'%'))")
