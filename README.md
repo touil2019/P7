@@ -32,6 +32,8 @@ Lancer l'application :
 
                 mvn spring-boot:run
                 
+
+                
                 
 Etapes :
 
@@ -42,6 +44,27 @@ Etapes :
           -book: pour les emprunts, les emails, les livres
           -utilisateur: pour les utilisateur_livre et les utilisateur_livre_user_role_list
           
+          
+  Import de base Postgre avec pgAdmin
+          
+        1. Se connecter au serveur PGSQL avec pgAdmin
+
+        2. Créer une base de données vierge (clic droit, Create, Database) sauf si elle existe déjà.
+
+        3. Faire un clic droit sur la base de données, Restore.
+
+        4. A l’onglet General, dans le champ Filename, charger le fichier :
+        
+        la base pour le microservice le nom du fichier est "dump_utilisateur.sql"
+        
+        la base pour le microservice le nom du fichier est "dump_book.sql"
+
+        Si le fichier n’apparait pas dans la liste, modifier le Format de fichiers recherché.
+
+        5. Cliquer sur Restore pour importer la base. Un message « Successfully completed » indique que l’opération s’est bien déroulée.
+
+
+
 Etape 1 :
 
     Zipkin-server
@@ -62,13 +85,16 @@ Etape 4 :
 
    1 microservice-utilisateur
    
-        utilisateur créer au lancement de l'application
-        7utilisateur.sql
-
+       Import de la base de donnée (opération non nécessaire):   
+        psql -U postgres utilisateur < /schema_utilisateur.sql
+        psql -U postgres utilisateur < /data_utilisateur.sql
+        
+        
    2  microservice-livre
    
-        liste de livre, email de relance et emprunts au lancement de l'application
-         P7livres.sql
+       import de la base de donnée (opération non nécessaire):
+        psql -U postgres book < /schema_book.sql
+        psql -U postgres book < /data_book.sql
 
    3  microservice-clientui
    
